@@ -21,8 +21,8 @@ const IMAGE = {
    "background": "img/background/desert.jpg",
    "deployment": {
       // These index as D/S/H
-      "red": ["deployment_red_dagger.png", "deployment_red_shield.png", "deployment_red_hammer.png"],
-      "blue": ["deployment_blue_dagger.png", "deployment_blue_shield.png", "deployment_blue_hammer.png"]
+      "red": ["img/deployment_red_dagger.png", "img/deployment_red_shield.png", "img/deployment_red_hammer.png"],
+      "blue": ["img/deployment_blue_dagger.png", "img/deployment_blue_shield.png", "img/deployment_blue_hammer.png"]
    }
 }
 
