@@ -18,7 +18,7 @@ let QUARTER_Y = MIDDLE_Y /2;
 let DEPLOYMENT_TOKEN_SIZE_INCH = 1.5;
 
 const IMAGE = {
-   "background": "desert.jpg",
+   "background": "img/background/desert.jpg",
    "deployment": {
       // These index as D/S/H
       "red": ["deployment_red_dagger.png", "deployment_red_shield.png", "deployment_red_hammer.png"],
