@@ -209,20 +209,16 @@ function create_select_optgroups( select, groups, optionSelectedHandler ) {
 
 
    if( optionSelectedHandler != null ) {
-      select.onclick = optionSelectedHandler;
+      select.onchange = optionSelectedHandler;
    }
 }
 
 function onOptionSelect( fn ) {
    return function( event ) {
-      console.log( event, event.target.index );
+      console.log( event, event.target.selectedIndex );
 
-      if( event.target.nodeName != "OPTION" ) {
-         return;
-      }
-      
-      console.log( "select: " + event.target.index );
-      fn( event.target.index, event.target.value );
+      console.log( "select: " + event.target.selectedIndex );
+      fn( event.target.selectedIndex, event.target[event.target.selectedIndex].value );
    } 
 }
 
