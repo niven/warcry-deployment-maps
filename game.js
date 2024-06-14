@@ -597,7 +597,7 @@ function map_draw() {
 
    // display the mission text parts
    // Note: maybe not do this every single frame?
-   ["blurb", "rules", "rounds"].forEach( e => document.getElementById(e).innerText = bp[e] == undefined ? "" : bp[e] );
+   ["blurb", "rules", "scoring", "rounds"].forEach( e => document.getElementById(e).innerText = bp[e] == undefined ? "" : bp[e] );
    
 }
 
