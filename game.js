@@ -105,8 +105,23 @@ const predefined_battleplans = [
    },
    
    /********** Unknown ******************/
+
+   /********** FEROCIOUS GNARLWOOD II: Electric Boogaloo ******************/
    {
-      "set": "Unknown",
+      "set": "The Ferocious Gnarlwood II",
+      "name": "Blades of Blood",
+      "blurb": "A deep and abiding hatred exists between two warbands, and when on the search for riches and artefacts in the mires, an opportunity arises to settle the matter once and for all.",
+      "deployments": {
+         "red": [ D(0, 3, 2), D(RIGHT, MIDDLE_Y, 2), D(MIDDLE_X, 3, 1) ],
+         "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D(MIDDLE_X, BOTTOM-3, 1)  ]
+      },
+      "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(BOTTOM-3, BOTTOM-3,1) ],
+      "rules": "",
+      "scoring": "At the end of each battle round, the players score 1 victory point for holding 1 or more objectives, 1 victory point for holding more objectives than the other player and 1 victory point for holding 2 or more objectives.A Bloody Victory, or None At All: Score 1 victory point each time an enemy fighter within 3\" of an objective is taken down.",
+      "rounds": 4
+   },
+   {
+      "set": "The Ferocious Gnarlwood II",
       "name": "Loot and Pillage",
       "blurb": "A cache of useful supplies sits abandoned by its absent owners, piled high and yours for the taking. Any moral reservations in so doing must be put aside, for in the Gnarlwood, every resource must be exploited.",
       "deployments": {
@@ -118,8 +133,6 @@ const predefined_battleplans = [
       "scoring": "When the battle ends, each player scores 2 victory points for each friendly fighter that is carrying treasure. ",
       "rounds": 4
    },
-
-   /********** FEROCIOUS GNARLWOOD II: Electric Boogaloo ******************/
    {
       "set": "The Ferocious Gnarlwood II",
       "name": "Endless Struggle",
