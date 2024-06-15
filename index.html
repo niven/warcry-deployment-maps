@@ -49,12 +49,15 @@
    
 </head>
 <body onload="main();">
-	<fieldset>
-		<legend>Controls</legend>
-		Debug: <input type="checkbox" id="debug_toggle">
-		FPS: <input type="checkbox" id="fps_toggle">
-      Background: <input type="checkbox" id="background_toggle">
+   <fieldset id="debug">
+      <legend>Debug</legend>
+      Debug: <input type="checkbox" id="debug_toggle">
       Grid: <input type="checkbox" id="grid_toggle">
+      FPS: <input type="checkbox" id="fps_toggle">
+   </fieldset>
+   <fieldset id="controls">
+      <legend>Controls</legend>
+      Background: <input type="checkbox" id="background_toggle">
       Bubbles: <input type="checkbox" id="bubble_toggle">
       Width: <input type="range" value="800" min="640" max="2400" step="160" id="canvas_width"/>
    </fieldset>
