@@ -558,15 +558,15 @@ function map_draw() {
    // Draw a border around the board
    gfx_rect( pix(ZERO), Z_INDEX.background, BOARD_WIDTH_INCH * PPI, BOARD_HEIGHT_INCH * PPI , Color.black );
 
-   // Draw center axes
-   gfx_line( pix( V(0, BOARD_HEIGHT_INCH/2) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH, BOARD_HEIGHT_INCH/2) ), PPI * 0.02, Color.black, LINE_DOTTED );
-   gfx_line( pix( V(BOARD_WIDTH_INCH/2, 0) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH/2, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
+   if( SHOW_AXIS ) {
+      // Draw center axes
+      gfx_line( pix( V(0, BOARD_HEIGHT_INCH/2) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH, BOARD_HEIGHT_INCH/2) ), PPI * 0.02, Color.black, LINE_DOTTED );
+      gfx_line( pix( V(BOARD_WIDTH_INCH/2, 0) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH/2, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
 
-   // Draw diagonal axes?
-   // Make both of these optional settings!
-   gfx_line( pix( V(0, 0) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
-   gfx_line( pix( V(RIGHT, 0) ), Z_INDEX.axes, pix( V(0, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
-
+      // Draw diagonal axes
+      gfx_line( pix( V(0, 0) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
+      gfx_line( pix( V(RIGHT, 0) ), Z_INDEX.axes, pix( V(0, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
+   }
 
    if( world.map.current_battleplan == -1 ) {
       return;

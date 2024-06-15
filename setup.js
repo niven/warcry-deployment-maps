@@ -1,10 +1,12 @@
 /* Global state and variables */
 
 var DEBUG = false;
-var SHOW_FPS = true;
-var SHOW_BACKGROUND = false;
-var SHOW_GRID = true;
+var SHOW_FPS = false;
+var SHOW_GRID = false;
+
+var SHOW_BACKGROUND = true;
 var SHOW_BUBBLE = true;
+var SHOW_AXIS = false;
 
 const BOARD_BACKGROUND_COLOR = "cornsilk";
 const BOARD_WIDTH_INCH = 30;
@@ -39,9 +41,11 @@ var controls = {
 
 	"debug_toggle": { "dom_id": "debug_toggle", "var": "DEBUG" },
 	"fps_toggle": { "dom_id": "fps_toggle", "var": "SHOW_FPS" },
-	"background_toggle": { "dom_id": "background_toggle", "var": "SHOW_BACKGROUND" },
 	"grid_toggle": { "dom_id": "grid_toggle", "var": "SHOW_GRID" },
+
+	"background_toggle": { "dom_id": "background_toggle", "var": "SHOW_BACKGROUND" },
 	"bubble_toggle": { "dom_id": "bubble_toggle", "var": "SHOW_BUBBLE" },
+	"bubble_toggle": { "dom_id": "axis_toggle", "var": "SHOW_AXIS" },
 	"canvas_width": { "dom_id": "canvas_width", "var": "CANVAS_WIDTH" }
 }
 
