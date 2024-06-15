@@ -4,8 +4,7 @@
 - contents
 */
 
-let ZERO = V(0, 0, 0);
-let TOP_LEFT = ZERO;
+let ZERO = V(0, 0);
 
 let RIGHT = BOARD_WIDTH_INCH;
 let BOTTOM = BOARD_HEIGHT_INCH;
@@ -13,6 +12,12 @@ let MIDDLE_X = BOARD_WIDTH_INCH / 2;
 let MIDDLE_Y = BOARD_HEIGHT_INCH / 2;
 let QUARTER_X = MIDDLE_X / 2;
 let QUARTER_Y = MIDDLE_Y /2;
+
+let TOP_LEFT = ZERO;
+let TOP_RIGHT = V(RIGHT, 0);
+let BOTTOM_LEFT = V(0, BOTTOM);
+let BOTTOM_RIGHT = V(RIGHT, BOTTOM);
+
 
 // This is probably best when they circular icons in a square image
 let DEPLOYMENT_TOKEN_SIZE_INCH = 1.5;
@@ -112,8 +117,8 @@ const predefined_battleplans = [
       "name": "Blades of Blood",
       "blurb": "A deep and abiding hatred exists between two warbands, and when on the search for riches and artefacts in the mires, an opportunity arises to settle the matter once and for all.",
       "deployments": {
-         "red": [ D(0, 3, 2), D(RIGHT, MIDDLE_Y, 2), D(MIDDLE_X, 3, 1) ],
-         "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D(MIDDLE_X, BOTTOM-3, 1)  ]
+         "red": [ D(6, MIDDLE_Y, 1), D(MIDDLE_X, BOTTOM, 2), D(MIDDLE_X, 3, 2) ],
+         "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D( ... (line_shorten(BOTTOM_LEFT, TOP_RIGHT, -6).v), 1)  ]
       },
       "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(BOTTOM-3, BOTTOM-3,1) ],
       "rules": "",
@@ -359,6 +364,16 @@ function arrows_for_point( p ) {
 
    let result = [];
 
+   // Diagonal lines!
+   // diagonal test?
+   // rounding issues of course. 
+   // if( line_test( V(0,0), V(RIGHT,BOTTOM), p ) ) {
+      
+   // }
+   // if( line_test( V(RIGHT,0), V(0,BOTTOM), p ) ) {
+      
+   // }
+
    // Horizontal lines
 
    // from left edge
@@ -546,6 +561,12 @@ function map_draw() {
    // Draw center axes
    gfx_line( pix( V(0, BOARD_HEIGHT_INCH/2) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH, BOARD_HEIGHT_INCH/2) ), PPI * 0.02, Color.black, LINE_DOTTED );
    gfx_line( pix( V(BOARD_WIDTH_INCH/2, 0) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH/2, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
+
+   // Draw diagonal axes?
+   // Make both of these optional settings!
+   gfx_line( pix( V(0, 0) ), Z_INDEX.axes, pix( V(BOARD_WIDTH_INCH, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
+   gfx_line( pix( V(RIGHT, 0) ), Z_INDEX.axes, pix( V(0, BOARD_HEIGHT_INCH) ), PPI * 0.02, Color.black, LINE_DOTTED );
+
 
    if( world.map.current_battleplan == -1 ) {
       return;
