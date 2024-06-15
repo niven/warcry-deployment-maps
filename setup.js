@@ -18,7 +18,7 @@ var CANVAS_HEIGHT, PPI, BOARD_ORIGIN_INCH, BOARD_ORIGIN_PIXELS;
 var ctx, canvas;
 
 var running = true;
-var frame_render_time_ms = new Array(1);
+var frame_render_time_ms = new Array(1000);
 
 /* Data */
 
@@ -125,7 +125,7 @@ function draw( time_since_start_rendering_ms ) {
 	let time_delta_ms = time_since_start_rendering_ms - world.last_time_ms;
 	world.last_time_ms = time_since_start_rendering_ms;
 	
-	let time_start = Date.now();
+	let time_start = performance.now();
 
 	let time_delta_seconds = time_delta_ms / 1000;
 
@@ -160,13 +160,12 @@ function draw( time_since_start_rendering_ms ) {
 		draw_debug();
 	}
    
-	let time_end = Date.now();
-	frame_render_time_ms.push( time_end - time_start );
+	frame_render_time_ms.push( performance.now() - time_start );
 	frame_render_time_ms.shift();
 	
    if( SHOW_FPS ) {
       const avg_time_ms = frame_render_time_ms.reduce( (sum, c) => sum + c , 0 ) / frame_render_time_ms.length;
-      const fps = Math.floor(1000 / avg_time_ms);
+      const fps = Math.floor(1000 / (avg_time_ms + 1) );
       fill_text( V(CANVAS_WIDTH - 160,40), "FPS: " + fps);
    }
    
