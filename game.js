@@ -121,8 +121,8 @@ const predefined_battleplans = [
          "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D( ... (line_shorten(BOTTOM_LEFT, TOP_RIGHT, -6).v), 1)  ]
       },
       "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(BOTTOM-3, BOTTOM-3,1) ],
-      "rules": "",
-      "scoring": "At the end of each battle round, the players score 1 victory point for holding 1 or more objectives, 1 victory point for holding more objectives than the other player and 1 victory point for holding 2 or more objectives.A Bloody Victory, or None At All: Score 1 victory point each time an enemy fighter within 3\" of an objective is taken down.",
+      "rules": [],
+      "scoring": ["At the end of each battle round, the players score 1 victory point for holding 1 or more objectives, 1 victory point for holding more objectives than the other player and 1 victory point for holding 2 or more objectives.", "A Bloody Victory, or None At All: Score 1 victory point each time an enemy fighter within 3\" of an objective is taken down."],
       "rounds": 4
    },
    {
@@ -134,8 +134,8 @@ const predefined_battleplans = [
          "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D(MIDDLE_X, BOTTOM-3, 1)  ]
       },
       "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(BOTTOM-3, BOTTOM-3,1) ],
-      "rules": "A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure. If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action. After a second loot action is made within 1\" of an objective, remove that objective from the battlefield.",
-      "scoring": "When the battle ends, each player scores 2 victory points for each friendly fighter that is carrying treasure. ",
+      "rules": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.","If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.","After a second loot action is made within 1\" of an objective, remove that objective from the battlefield."],
+      "scoring": ["When the battle ends, each player scores 2 victory points for each friendly fighter that is carrying treasure."],
       "rounds": 4
    },
    {
@@ -198,8 +198,8 @@ const predefined_battleplans = [
          "blue": [ D(QUARTER_X, BOTTOM, 2, Edge(QUARTER_X, BOTTOM, QUARTER_X)), D(0, MIDDLE_Y, 1), D(MIDDLE_X, MIDDLE_Y-6, 1)  ]
       },
       "objectives": [ V(8,6,1), V(RIGHT-8, 6,1), V(MIDDLE_X,MIDDLE_Y,1), V(8, BOTTOM-6,1), V(RIGHT-8, BOTTOM-6,1) ],
-      "rules": "A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure. If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action. After a loot action is made within 1\" of an objective, remove that objective from the battlefield. ",
-      "scoring": "At the end of each battle round, score 1 victory point for each quarter of the battlefield that has 1 or more friendly fighters wholly within it. At the end of the 4th battle round, each player scores 2 victory points for each treasure they are carrying.",
+      "rules": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.", "If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.", "After a loot action is made within 1\" of an objective, remove that objective from the battlefield."],
+      "scoring": ["At the end of each battle round, score 1 victory point for each quarter of the battlefield that has 1 or more friendly fighters wholly within it.", "At the end of the 4th battle round, each player scores 2 victory points for each treasure they are carrying."],
       "rounds": 4
    },
 
@@ -618,7 +618,23 @@ function map_draw() {
 
    // display the mission text parts
    // Note: maybe not do this every single frame?
-   ["blurb", "rules", "scoring", "rounds"].forEach( e => document.getElementById(e).innerText = bp[e] == undefined ? "" : bp[e] );
+   ["blurb", "rounds"].forEach( e => document.getElementById(e).innerText = bp[e] == undefined ? "" : bp[e] );
+   
+   ["scoring", "rules"].forEach( e => {
+      if( bp[e] == undefined ) {
+         return;
+      }
+
+      let element = document.getElementById(e);
+      while( element.firstChild ) {
+         element.removeChild(element.firstChild);
+      }
+      bp[e].forEach( r => {
+         let s = document.createElement("span")
+         s.innerText = r;
+         element.appendChild(s);
+      });
+   });
    
 }
 
