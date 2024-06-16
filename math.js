@@ -150,11 +150,7 @@ function hit_triangle(a,b,c,p) {
 	var planeBC = (b.x - p.x) * (c.y - p.y) - (c.x - p.x) * (b.y-p.y);
 	var planeCA = (c.x - p.x) * (a.y - p.y) - (a.x - p.x) * (c.y-p.y);
    
-	return sign(planeAB) == sign(planeBC) && sign(planeBC) == sign(planeCA);
-}
-
-function sign(n) {
-   return Math.abs(n)/n;
+	return Math.sign(planeAB) == Math.sign(planeBC) && Math.sign(planeBC) == Math.sign(planeCA);
 }
 
 //The maximum is exclusive and the minimum is inclusive
