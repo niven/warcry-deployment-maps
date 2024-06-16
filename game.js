@@ -270,10 +270,24 @@ function Edge( x, y, range) {
    }
 }
 
-function set_battleplan(index) {
+function init_battleplan(index) {
    world.map.current_battleplan = index;
+   let bp = predefined_battleplans[index];
 
-   world.map.arrows = predefined_battleplans[index].objectives.flatMap( o => arrows_for_point( V(o.x, o.y) ) );
+   // Positioning arrows for objectives
+   world.map.arrows = bp.objectives.flatMap( o => arrows_for_point( V(o.x, o.y) ) );
+
+   // Positioning arrows for deployment tokens except for edges
+   ["red", "blue"].forEach( color => {
+      [DAGGER, SHIELD, HAMMER].forEach( group => {
+         let deployment = bp.deployments[color][group];
+         if( deployment["type"] != "edge" ) {            
+            let arrows = arrows_for_point( deployment.p );
+            world.map.arrows.push( ...arrows );
+         }
+      })
+   });
+
 }
 
 
@@ -293,7 +307,7 @@ function map_init() {
    create_select_optgroups( 
       document.getElementById("predefined_battleplans"),
       groups, 
-      onOptionSelect( set_battleplan )
+      onOptionSelect( init_battleplan )
    );
 
    world.map = {
@@ -330,8 +344,7 @@ function map_init() {
    let scale = target_width / source_width;
    world.map.scale.deployment_token = V(scale, scale);
 
-
-   set_battleplan(0);
+   init_battleplan(0);
 }
 
 
@@ -609,12 +622,6 @@ function map_draw() {
             }
          }
 
-         // Draw positioning arrows except for edges
-         if( deployment["type"] != "edge" ) {            
-            let arrows = arrows_for_point( deployment.p );
-            arrows.forEach( a => arrow( a[1], a[0] ) );
-         }
-
       });
    });
 
@@ -631,7 +638,7 @@ function map_draw() {
       });
    } 
 
-   // Draw arrows for objectives
+   // Draw arrows for deployments and objectives
    world.map.arrows.forEach( a => arrow( a[1], a[0] ) );
 
    // display the mission text parts
