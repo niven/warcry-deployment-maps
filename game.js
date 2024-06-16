@@ -296,7 +296,6 @@ function map_init() {
       onOptionSelect( set_battleplan )
    );
 
-
    world.map = {
       "PPI": 0, // Pixels Per Inch. Calculated after canvas creation
       "current_battleplan": -1, // -1 is no plan set
@@ -623,11 +622,7 @@ function map_draw() {
    if( bp.objectives != undefined ) {
       bp.objectives.forEach( o => {
 
-         // draw 1 or 2 arrows from the board edges to the objective with distance in inches
-         // - if the objective is on the horizontal or vertical middle, only draw the shortest arrow
-         //   (if it's on the vertical, then only draw a vertical arrow) to avoid clutter
          let arrows = arrows_for_point( o );
-         arrows.forEach( a => arrow( a[1], a[0] ) );
 
          objective( o );
          if( SHOW_BUBBLE ) {
@@ -635,6 +630,9 @@ function map_draw() {
          }
       });
    } 
+
+   // Draw arrows for objectives
+   world.map.arrows.forEach( a => arrow( a[1], a[0] ) );
 
    // display the mission text parts
    // Note: maybe not do this every single frame?
