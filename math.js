@@ -83,6 +83,23 @@ function line_delta(from, to, distance) {
    return V( to.x + distance * n.x, to.y + distance * n.y );
 }
 
+/**
+ * Test if a point is on a line
+ * Note: does not bounds check, just if it's on the infinitely long line defined by (from,to)
+ */
+function line_test( from, to, point ) {
+
+   let v = add( to, minus(from) ); // turn two points into vector
+   let n0 = vector_normalize(v);
+   let n1 = vector_normalize(point); // from 0 to point
+
+   let diff = vector_length( add( n0, minus(n1) ) );
+
+   // if they were opposite directions the distance is 0, if they are aligned then it's 2
+   // But float rounding
+   return diff == 0 || Math.fround(diff) == 2;
+}
+
 function vector_normalize( a ) {
 
    let result = V();
