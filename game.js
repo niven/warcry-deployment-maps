@@ -95,6 +95,25 @@ function init_battleplan(index) {
       })
    });
 
+   // display the mission text parts
+   ["blurb", "rounds"].forEach( e => document.getElementById(e).innerText = bp[e] == undefined ? "" : bp[e] );
+   
+   ["scoring", "rules"].forEach( e => {
+      if( bp[e] == undefined ) {
+         return;
+      }
+
+      let element = document.getElementById(e);
+      while( element.firstChild ) {
+         element.removeChild(element.firstChild);
+      }
+      bp[e].forEach( r => {
+         let s = document.createElement("span")
+         s.innerText = r;
+         element.appendChild(s);
+      });
+   });
+
 }
 
 
@@ -436,8 +455,6 @@ function map_draw() {
    if( bp.objectives != undefined ) {
       bp.objectives.forEach( o => {
 
-         let arrows = arrows_for_point( o );
-
          objective( o );
          if( SHOW_BUBBLE ) {
             bubble( o, PPI * (o.v[2] == undefined ? 3 : o.v[2]), Color.bubble.grey );
@@ -449,26 +466,6 @@ function map_draw() {
    if( SHOW_ARROW ) {
       world.map.arrows.forEach( a => arrow( a[1], a[0] ) );
    }
-
-   // display the mission text parts
-   // Note: maybe not do this every single frame?
-   ["blurb", "rounds"].forEach( e => document.getElementById(e).innerText = bp[e] == undefined ? "" : bp[e] );
-   
-   ["scoring", "rules"].forEach( e => {
-      if( bp[e] == undefined ) {
-         return;
-      }
-
-      let element = document.getElementById(e);
-      while( element.firstChild ) {
-         element.removeChild(element.firstChild);
-      }
-      bp[e].forEach( r => {
-         let s = document.createElement("span")
-         s.innerText = r;
-         element.appendChild(s);
-      });
-   });
    
 }
 
