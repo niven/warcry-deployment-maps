@@ -118,10 +118,10 @@ const predefined_battleplans = [
       "name": "Blades of Blood",
       "blurb": "A deep and abiding hatred exists between two warbands, and when on the search for riches and artefacts in the mires, an opportunity arises to settle the matter once and for all.",
       "deployments": {
-         "red": [ D(6, MIDDLE_Y, 1), D(MIDDLE_X, BOTTOM, 2), D(MIDDLE_X, 3, 2) ],
-         "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D( ... (line_delta(BOTTOM_LEFT, TOP_RIGHT, -6).v), 1)  ]
+         "red": [ D(6, MIDDLE_Y, 1), D(MIDDLE_X, BOTTOM, 2), D( ...(line_delta(BOTTOM_LEFT, TOP_RIGHT, -6).v), 2) ],
+         "blue": [ D(RIGHT-6, MIDDLE_Y, 1), D(MIDDLE_X, 0, 2), D( ...(line_delta(TOP_RIGHT,BOTTOM_LEFT, -6).v), 2) ]
       },
-      "objectives": [ V(3,3), V(MIDDLE_X, MIDDLE_Y), V(BOTTOM-3, BOTTOM-3) ],
+      "objectives": [ V(MIDDLE_X,MIDDLE_Y-6), V(MIDDLE_X, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y+6) ],
       "rules": [],
       "scoring": ["At the end of each battle round, the players score 1 victory point for holding 1 or more objectives, 1 victory point for holding more objectives than the other player and 1 victory point for holding 2 or more objectives.", "A Bloody Victory, or None At All: Score 1 victory point each time an enemy fighter within 3\" of an objective is taken down."],
       "rounds": 4
