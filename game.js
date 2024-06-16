@@ -639,7 +639,9 @@ function map_draw() {
    } 
 
    // Draw arrows for deployments and objectives
-   world.map.arrows.forEach( a => arrow( a[1], a[0] ) );
+   if( SHOW_ARROW ) {
+      world.map.arrows.forEach( a => arrow( a[1], a[0] ) );
+   }
 
    // display the mission text parts
    // Note: maybe not do this every single frame?

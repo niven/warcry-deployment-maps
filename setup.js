@@ -6,6 +6,7 @@ var SHOW_GRID = false;
 
 var SHOW_BACKGROUND = true;
 var SHOW_BUBBLE = true;
+var SHOW_ARROW = true;
 var SHOW_AXIS = false;
 
 const BOARD_BACKGROUND_COLOR = "cornsilk";
@@ -14,7 +15,7 @@ const BOARD_HEIGHT_INCH = 22;
 const BOARD_MARGIN_INCH = 2.5;
 
 var CANVAS_WIDTH = 800;
-// These are calculated whenever the canvas with changes and on init()
+// These are calculated whenever the canvas width changes and on init()
 var CANVAS_HEIGHT, PPI, BOARD_ORIGIN_INCH, BOARD_ORIGIN_PIXELS;
 
 var ctx, canvas;
@@ -35,7 +36,7 @@ var world = {
 /* Code */
 
 // control values for playing around, read from the DOM, but set a global to
-// avoid reading world.controls.smoke_density.value every frame a billion times
+// avoid reading these every frame a billion times in the case of a value used for calculation
 var control_values_need_update = true;
 var controls = {
 
@@ -45,7 +46,8 @@ var controls = {
 
 	"background_toggle": { "dom_id": "background_toggle", "var": "SHOW_BACKGROUND" },
 	"bubble_toggle": { "dom_id": "bubble_toggle", "var": "SHOW_BUBBLE" },
-	"bubble_toggle": { "dom_id": "axis_toggle", "var": "SHOW_AXIS" },
+	"axis_toggle": { "dom_id": "axis_toggle", "var": "SHOW_AXIS" },
+	"arrow_toggle": { "dom_id": "arrow_toggle", "var": "SHOW_ARROW" },
 	"canvas_width": { "dom_id": "canvas_width", "var": "CANVAS_WIDTH" }
 }
 
