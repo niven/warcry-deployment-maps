@@ -100,7 +100,8 @@ function line_shorten(from, to, distance) {
 }
 
 function vector_length( a ) {
-   return Math.sqrt( a.x*a.x + a.y*a.y + a.z*a.z );
+   let result = a.v.reduce( (accumulator, current_value) => accumulator + current_value*current_value, 0 );
+   return Math.sqrt(result);
 }
 
 // 𝑟𝑧=(cos𝜃+𝑖sin𝜃)(𝑥+𝑖𝑦)=𝑥cos𝜃−𝑦sin𝜃+𝑖(𝑥sin𝜃+𝑦cos𝜃)
