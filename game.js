@@ -227,6 +227,20 @@ const predefined_battleplans = [
       },
       "objectives": [ V(0, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y), V(RIGHT, MIDDLE_Y) ]
    },
+   {
+      "set": "Bladeborn Battles",
+      "name": "Beset",
+      "source": "White Dwarf 477",
+      "blurb": "A warband has been caught out of position by its rivals and is now facing a bitter struggle to survive.",
+      "deployments": {
+         "red": [ D(8, BOTTOM-6, 1), D(RIGHT-8, 6, 1), D(RIGHT-8, BOTTOM-6, 1) ],
+         "blue": [ D(MIDDLE_X, BOTTOM, 1), D(MIDDLE_X, MIDDLE_Y-6, 1), D(8, 6, 1)  ]
+      },
+      "objectives": [],
+      "rules": ["The battle ends immediately if all of the fighters in a single warband's Shield and Dagger battle groups are taken down. When this happens the player of the other warband wins."],
+      "scoring": ["When the battle ends, each player adds up the total points value for the enemy fighters taken down by their warband. The player with the highest total wins the battle."],
+      "rounds": 4
+   },
 ]
 .sort( (a,b) => ( (a.set ? a.set+" - " : "0") + a.name ).localeCompare(( (b.set ? b.set+" - " : "0") + b.name ), "en") );
 // above sort uses "set - name" for sorting
