@@ -270,6 +270,12 @@ function Edge( x, y, range) {
    }
 }
 
+function set_battleplan(index) {
+   world.map.current_battleplan = index;
+
+   world.map.arrows = predefined_battleplans[index].objectives.flatMap( o => arrows_for_point( V(o.x, o.y) ) );
+}
+
 
 function map_init() {
 
@@ -287,14 +293,15 @@ function map_init() {
    create_select_optgroups( 
       document.getElementById("predefined_battleplans"),
       groups, 
-      onOptionSelect( function(index) { world.map.current_battleplan = index } )
+      onOptionSelect( set_battleplan )
    );
 
 
    world.map = {
       "PPI": 0, // Pixels Per Inch. Calculated after canvas creation
-      "current_battleplan": 0, // -1 is no plan set
-      "scale": {}
+      "current_battleplan": -1, // -1 is no plan set
+      "scale": {},
+      "arrows": [] // arrows to point to deployments or objectives
    };
    world.debug.map = {
       "text": [],
@@ -324,6 +331,8 @@ function map_init() {
    let scale = target_width / source_width;
    world.map.scale.deployment_token = V(scale, scale);
 
+
+   set_battleplan(0);
 }
 
 
@@ -365,11 +374,11 @@ function pixels_from_inches( inches ) {
 /**
  * An arrow is a gfx that has a start and end, where the end has a pointy bit
  * 
- * This returns arrows: the shortest horizontal and shortest vertical arrows from
- * the board edge to the point.
+ * This returns arrows: Either the shortest horizontal and shortest vertical arrows from
+ * the board edge to the point or a diagonal one if the point is on a diagonal axis
  * It does not make arrows from edge to middle horizontally or vertically
  * 
- * p: point in inches on the board (excl margings)
+ * p: point in inches on the board (excl margins)
  */
 function arrows_for_point( p ) {
 
