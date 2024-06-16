@@ -40,63 +40,59 @@ class Vector {
 
 function add( a, ...v ) {
 
-   let result = v.reduce( 
-      (accumulator, current_value) => V( 
-         accumulator.x + current_value.x,
-         accumulator.y + current_value.y,
-         accumulator.z + current_value.z
-      ), a );
+   let result = v.reduce( (accumulator, current_value) => {
+         let e = V();
+         for( i in accumulator.v ) {
+            e.v[i] = accumulator.v[i] + current_value.v[i];
+         }
+         return e;
+   }, a );
+   
    return result;
 }
 
-function minus( a ) {
-   return V( -a.x, -a.y, -a.z );
+function minus( vector ) {
+   return V( ...vector.v.map( e => -e ) );
 }
+
+function vector_mul( scalar, vector ) {
+   return V( ...vector.v.map( e => scalar * e ) );
+}
+
 /**
  * Interpolate between 2 vectors
  */
 function lerp( a, b, d = 0.5 ) {
-   return V(
-      a.x * (1-d) + b.x * d,
-      a.y * (1-d) + b.y * d,
-      a.z * (1-d) + b.z * d,
-   );
+   return add( vector_mul( (1-d), a ), vector_mul( d, b ) );
 }
 
 /**
  * Having a line from A to B, produce C where 
- * C is on the line A-----------C---B at the point before B
- * so that C-B == distance
- *        + B
- *     d /|
- *      / |dy
- *     +__|
- *    / dx|
- *   /    | Δy
- *  /θ    |    
- * +______+
- * A  Δx
+ * C is on the line A-----B
+ * so that distance == C-B
+ * 
+ * A-----------C---B distance is negative
+ * A---------B-----C distance is positive
  **/
-function line_shorten(from, to, distance) {
+function line_delta(from, to, distance) {
 
-   let delta_x = from.x - to.x;
-   let delta_y = from.y - to.y;
+   let v = add( to, minus(from) );
 
-   // for horizontal and vertical lines it's easy, and returning early
-   // avoids division by zero for horizontal lines
-   if( delta_x == 0 ) {
-      return V( to.x, to.y + (delta_y < 0 ? -distance : distance ) );
+   let n = vector_normalize( v );
+
+   return V( to.x + distance * n.x, to.y + distance * n.y );
+}
+
+function vector_normalize( a ) {
+
+   let result = V();
+   let l = vector_length( a );
+
+   for( i in a.v ) {
+      result.v[i] = a.v[i] / l;
    }
-   if( delta_y == 0 ) {
-      return V( to.x + (delta_x < 0 ? -distance : distance ), to.y );
-   }
 
-   let theta = Math.atan( delta_y / delta_x );
-
-   let dx = (delta_x < 0 ? 1 : -1 ) * distance * Math.cos( theta );
-   let dy = (delta_y < 0 ? -1 : 1 ) * distance * Math.sin( theta );
-
-   return V( to.x + dx, to.y + dy );
+   return result;
 }
 
 function vector_length( a ) {
@@ -144,8 +140,9 @@ function sign(n) {
    return Math.abs(n)/n;
 }
 
+//The maximum is exclusive and the minimum is inclusive
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min); 
 }

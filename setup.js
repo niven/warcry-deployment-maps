@@ -64,10 +64,10 @@ function setup_init() {
 	canvas.setAttribute("height", CANVAS_HEIGHT);
 
 	PPI = CANVAS_WIDTH / ( BOARD_WIDTH_INCH + 2*BOARD_MARGIN_INCH );
-	console.log("PPI", PPI);
 	BOARD_ORIGIN_INCH = V( BOARD_MARGIN_INCH, BOARD_MARGIN_INCH );
 	BOARD_ORIGIN_PIXELS = V( BOARD_MARGIN_INCH * PPI, BOARD_MARGIN_INCH * PPI );
 
+	console.log("PPI, BOARD_ORIGIN_INCH, BOARD_ORIGIN_PIXELS", PPI, BOARD_ORIGIN_INCH.v, BOARD_ORIGIN_PIXELS.v);
 }
 
 /* This runs once and sets up the event loop. Put any initialization here

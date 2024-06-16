@@ -102,11 +102,12 @@ const predefined_battleplans = [
       "red": [ D(0, 0, 1), D(MIDDLE_X, 0, 2), D(RIGHT, QUARTER_Y, 2, Edge(RIGHT, QUARTER_Y, QUARTER_Y ) ) ],
       "blue": [ D(0, BOTTOM, 1, Edge(0, BOTTOM-QUARTER_Y, QUARTER_Y), Edge(QUARTER_X, BOTTOM, QUARTER_X) ), D(MIDDLE_X, BOTTOM, 1), D(RIGHT-QUARTER_X, BOTTOM, 2, Edge(RIGHT-QUARTER_X, BOTTOM, QUARTER_X) )  ]
    },
-   "objectives": [  V(6, 4), V(MIDDLE_X, 6), V(RIGHT-6, 4),
-                    V(0, MIDDLE_Y), V(MIDDLE_X, BOTTOM-6), V(RIGHT, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y),
-                    V(6, BOTTOM-4), V(RIGHT-6, BOTTOM-4),
-                    V(8, MIDDLE_Y), V(RIGHT-8, MIDDLE_Y), V(RIGHT, 0), V(RIGHT, BOTTOM)
-                     ]
+   "objectives": [  V(6, 4,1), V(MIDDLE_X, 6,1), V(RIGHT-6, 4,1),
+                    V(0, MIDDLE_Y,1), V(MIDDLE_X, BOTTOM-6,1), V(RIGHT, MIDDLE_Y,1), V(MIDDLE_X, MIDDLE_Y,1),
+                    V(6, BOTTOM-4,1), V(RIGHT-6, BOTTOM-4,1),
+                    V(8, MIDDLE_Y,1), V(RIGHT-8, MIDDLE_Y,1), V(RIGHT, 0,1), V(RIGHT, BOTTOM,1),
+                    V(...line_delta(BOTTOM_RIGHT, TOP_LEFT, -5).v ,1)
+                  ]
    },
    
    /********** Unknown ******************/
@@ -118,7 +119,7 @@ const predefined_battleplans = [
       "blurb": "A deep and abiding hatred exists between two warbands, and when on the search for riches and artefacts in the mires, an opportunity arises to settle the matter once and for all.",
       "deployments": {
          "red": [ D(6, MIDDLE_Y, 1), D(MIDDLE_X, BOTTOM, 2), D(MIDDLE_X, 3, 2) ],
-         "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D( ... (line_shorten(BOTTOM_LEFT, TOP_RIGHT, -6).v), 1)  ]
+         "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D( ... (line_delta(BOTTOM_LEFT, TOP_RIGHT, -6).v), 1)  ]
       },
       "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(BOTTOM-3, BOTTOM-3,1) ],
       "rules": [],
@@ -292,7 +293,7 @@ function map_init() {
 
    world.map = {
       "PPI": 0, // Pixels Per Inch. Calculated after canvas creation
-      "current_battleplan": 2, // -1 is no plan set
+      "current_battleplan": 0, // -1 is no plan set
       "scale": {}
    };
    world.debug.map = {
@@ -358,11 +359,7 @@ function process_click( p ) {
 
 
 function pixels_from_inches( inches ) {
-   return V( 
-         inches.x * PPI,
-         inches.y * PPI,
-         inches.z * PPI,
-      );
+   return vector_mul( PPI, inches );
 }
 
 /**

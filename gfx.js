@@ -74,7 +74,7 @@ function render() {
          // For any direction arrows do more math to orient the pointer correctly
          let line_width = PPI * 0.1;
          let arrowead_width = 6 * line_width;
-         let shortened = line_shorten(g.p, g.head, arrowead_width);
+         let shortened = line_delta(g.p, g.head, -arrowead_width);
          let text_center = lerp( g.p, shortened );
          // Move the text a lineswidth away so it does not touch the vertical lines
          // also move it up half the size because text is rendered baseline middle
