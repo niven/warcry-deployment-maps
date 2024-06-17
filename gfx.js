@@ -70,8 +70,6 @@ function render() {
          break;
       }
       case "arrow": {
-         // Note: these arrows are always horizontal or vertical.
-         // For any direction arrows do more math to orient the pointer correctly
          let line_width = PPI * 0.1;
          let arrowead_width = 6 * line_width;
          let shortened = line_delta(g.p, g.head, -arrowead_width);
@@ -79,13 +77,16 @@ function render() {
          // Move the text a lineswidth away so it does not touch the vertical lines
          // also move it up half the size because text is rendered baseline middle
          fill_text( V(text_center.x + line_width, text_center.y - line_width - g.font_size/2), g.text, g.color, g.font_size + "px Menlo");
-         // triangle for the head
+         // line for the shaft
          stroke_line( g.p, shortened, line_width, g.color, [] );
-         if( g.p.x == g.head.x ) { // this is a vertical line
-            draw_triangle( V(shortened.x - arrowead_width/2, shortened.y), V(shortened.x + arrowead_width/2, shortened.y), g.head, g.color);
-         } else { // horizontal line
-            draw_triangle( V(shortened.x, shortened.y - arrowead_width/2), V(shortened.x , shortened.y+ arrowead_width/2), g.head, g.color);
-         }
+         
+         // triangle for the head: the head point, and two points perpdendicular to the direction of the arrow
+         let head_vector = add( shortened, minus(g.head) );
+         let perp = vector_normalize( V(head_vector.y, -head_vector.x) );
+         let corner_a = add( shortened, vector_mul( arrowead_width/2, perp ) );
+         let corner_b = add( shortened, vector_mul( -arrowead_width/2, perp ) )
+         
+         draw_triangle( corner_a, corner_b, g.head, g.color);
          break;
       }
       case "circle": {
