@@ -64,6 +64,19 @@ const predefined_battleplans = [
    /********** FEROCIOUS GNARLWOOD II: Electric Boogaloo ******************/
    {
       "set": "The Ferocious Gnarlwood II",
+      "name": "Lightning Raid",
+      "blurb": "Battle erupts over scant resources, some more valuable than others.",
+      "deployments": {
+         "red": [ D(RIGHT, 0, 1), D(0, 0, 2), D(MIDDLE_X,0,1) ],
+         "blue": [ D(0, BOTTOM, 1), D(RIGHT, BOTTOM, 2), D(MIDDLE_X, BOTTOM, 1) ]
+      },
+      "objectives": [ V(3,6), V(MIDDLE_X-7, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y), V(MIDDLE_X+7, MIDDLE_Y), V(RIGHT-3,BOTTOM-6) ],
+      "rules": ["Fighters cannot control more than one objective at a time in this battleplan. If a fighter is within 3” of multiple objectives, starting with the player that took the first activation that battle round, players decide which objectives all of such friendly fighters are controlling.","Devastate their Ranks: At the end of each battle round, each player determines the total Wounds characteristic of enemy fighters that are taken down this battle. This is their devastation total. The player whose devastation total is higher scores 2 victory points."],
+      "scoring": ["At the end of each battle round, each player scores 1 victory point for each of the following that is true: They control any objective, They control two or more objectives, They control more objectives than their opponent.", "Glittering Hoard: After the initiative phase each battle round, if one player has fewer victory points, that player picks an objective. The player that controls that objective at the end of that battle round scores 1 additional victory point."],
+      "rounds": 4
+   },
+   {
+      "set": "The Ferocious Gnarlwood II",
       "name": "Blades of Blood",
       "blurb": "A deep and abiding hatred exists between two warbands, and when on the search for riches and artefacts in the mires, an opportunity arises to settle the matter once and for all.",
       "deployments": {
