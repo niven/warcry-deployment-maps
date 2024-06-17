@@ -152,6 +152,7 @@ function init_battleplan(index) {
       });
    });
 
+   document.getElementById("title").innerText = `${bp.set} - ${bp.name}`;
 }
 
 
