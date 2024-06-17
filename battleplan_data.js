@@ -39,8 +39,9 @@ function Edge( x, y, range) {
    }
 }
 
-/* Deployments are in DASH order (DAgger, Shield, Hammer). Locations are in inches starting from top left = (0,0)
- **/
+/**
+ * Deployments are in DASH order (DAgger, Shield, Hammer). Locations are in inches starting from top left = (0,0)
+ */
 const predefined_battleplans = [
 
 {

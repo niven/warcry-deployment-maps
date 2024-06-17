@@ -12,12 +12,47 @@ const IMAGE = {
    "background": "img/background/desert.jpg",
    "deployment": {
       // These index as D/S/H
-      "red": ["img/deployment_red_dagger.png", "img/deployment_red_shield.png", "img/deployment_red_hammer.png"],
-      "blue": ["img/deployment_blue_dagger.png", "img/deployment_blue_shield.png", "img/deployment_blue_hammer.png"]
+      // Source: Squirem's AoS collection from here: https://drive.google.com/drive/folders/1bWYVVVB90Xxg5RVf4eswfT1xJaVzgYCk
+      "red": ["img/dagger.svg", "img/deployment_red_shield.png", "img/deployment_red_hammer.png"],
+      "blue": ["img/dagger.svg", "img/deployment_blue_shield.png", "img/deployment_blue_hammer.png"]
    }
 }
 
+function make_deployment_icons() {
+   
+   // let main_ctx = ctx;
+   // ctx = offscreen.getContext("2d");
+   const size = 256;//DEPLOYMENT_TOKEN_SIZE_INCH * PPI;
+   const offscreen = new OffscreenCanvas(size, size);
+   let offscreen_context = offscreen.getContext('2d');
+   // load icon
+   ["dagger", "shield", "hammer"].forEach( i => {
+      gfx_image_load( "img/"+i+".svg", function( image ){
+         // make a blue and red version
+         let ctx_main = ctx;
+         ctx = offscreen_context;
+         draw_disk( V(size/2,size/2), size/2, Color.red );
+         draw_image( V(size/2,size/2), image, true, V(1,1) );
+         // put in the image cache
+         ui.image_cache["red/" + i] = {
+            "image": offscreen.transferToImageBitmap(),
+            "loaded": true
+         }
 
+         draw_disk( V(size/2,size/2), size/2, Color.blue );
+         draw_image( V(size/2,size/2), image, true, V(1,1) );
+         // put in the image cache
+         ui.image_cache["blue/" + i] = {
+            "image": offscreen.transferToImageBitmap(),
+            "loaded": true
+         }
+
+         ctx = ctx_main;
+
+      });
+   });
+   // ctx = main_ctx;
+}
 /**
  *           1.5π
  *          =  = 
@@ -55,6 +90,8 @@ const Z_INDEX = {
 
 const Color = {
    "DEBUG": "maroon",
+   "red": "rgba(217, 0, 29, 1)",
+   "blue": "rgba(13, 60, 100, 1)",
    "background": "antiquewhite",
    "light": "moccasin",
    "round": "rgba(139, 189, 250, 1)",
@@ -76,6 +113,7 @@ const DAGGER = 0;
 const SHIELD = 1;
 const HAMMER = 2;
 
+const GROUP_NAME = ["dagger", "shield", "hammer"];
 
 function init_battleplan(index) {
    world.map.current_battleplan = index;
@@ -156,6 +194,8 @@ function map_init() {
       world.map.scale.background = V(x, y);
    } );
 
+   make_deployment_icons();
+
    // load the deployment tokens
    ["red", "blue"].forEach( color => {
       [DAGGER, SHIELD, HAMMER].forEach( group => {
@@ -223,11 +263,13 @@ function arrows_for_point( p ) {
    let result = [];
 
    // Diagonal lines!
-   // diagonal test?
    // rounding issues of course. 
-   // if( line_test( V(0,0), V(RIGHT,BOTTOM), p ) ) {
-      
-   // }
+   if( line_test( TOP_LEFT, BOTTOM_RIGHT, p ) ) {
+      result.push( [TOP_LEFT, p] );
+   }
+   if( line_test( BOTTOM_LEFT, TOP_RIGHT, p ) ) {
+      result.push( [BOTTOM_LEFT, p] );
+   }
    // if( line_test( V(RIGHT,0), V(0,BOTTOM), p ) ) {
       
    // }
@@ -352,6 +394,7 @@ function deploy( d, image ) {
       gfx_text( pix( t ), Z_INDEX.deployment-2, text, Color.black, text_size*PPI + "px Menlo" );
    }
 
+   // ui_image( pix(p), Z_INDEX.deployment, image, true, world.map.scale.deployment_token );
    ui_image( pix(p), Z_INDEX.deployment, image, true, world.map.scale.deployment_token );
 }
 
@@ -437,7 +480,8 @@ function map_draw() {
       [DAGGER, SHIELD, HAMMER].forEach( group => {
 
          let deployment = bp.deployments[color][group];
-         deploy( deployment, IMAGE.deployment[color][group] );
+         // deploy( deployment, IMAGE.deployment[color][group] );
+         deploy( deployment, color + "/" + GROUP_NAME[group] );
 
          // Show deployment area 
          if( SHOW_BUBBLE ) {
