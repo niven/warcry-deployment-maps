@@ -89,9 +89,10 @@ function line_delta(from, to, distance) {
  */
 function line_test( from, to, point ) {
 
-   let v = add( to, minus(from) ); // turn two points into vector
-   let n0 = vector_normalize(v);
-   let n1 = vector_normalize(point); // from 0 to point
+   let v0 = add( to, minus(from) ); // turn two points into vector
+   let v1 = add( to, minus(point) ); // if a point is on a vector from a-b, then the vector a-p is the same
+   let n0 = vector_normalize(v0);
+   let n1 = vector_normalize(v1);
 
    let diff = vector_length( add( n0, minus(n1) ) );
 

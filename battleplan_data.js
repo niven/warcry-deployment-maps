@@ -44,20 +44,29 @@ function Edge( x, y, range) {
  */
 const predefined_battleplans = [
 
-{
    /*********** Test maps **************************************************/
-   "set": "0 - test",
-   "name": "GFX Test Deployment",
-   "deployments": {
-      "red": [ D(0, 0, 1), D(MIDDLE_X, 0, 2), D(RIGHT, QUARTER_Y, 2, Edge(RIGHT, QUARTER_Y, QUARTER_Y ) ) ],
-      "blue": [ D(0, BOTTOM, 1, Edge(0, BOTTOM-QUARTER_Y, QUARTER_Y), Edge(QUARTER_X, BOTTOM, QUARTER_X) ), D(MIDDLE_X, BOTTOM, 1), D(RIGHT-QUARTER_X, BOTTOM, 2, Edge(RIGHT-QUARTER_X, BOTTOM, QUARTER_X/2) )  ]
+   {
+      "set": "0 - test",
+      "name": "GFX Test Deployment",
+      "deployments": {
+         "red": [ D(0, 0, 1), D(MIDDLE_X, 0, 2), D(RIGHT, QUARTER_Y, 2, Edge(RIGHT, QUARTER_Y, QUARTER_Y ) ) ],
+         "blue": [ D(0, BOTTOM, 1, Edge(0, BOTTOM-QUARTER_Y, QUARTER_Y), Edge(QUARTER_X, BOTTOM, QUARTER_X) ), D(MIDDLE_X, BOTTOM, 1), D(RIGHT-QUARTER_X, BOTTOM, 2, Edge(RIGHT-QUARTER_X, BOTTOM, QUARTER_X/2) )  ]
+      },
+      "objectives": [  V(6, 4,1), V(MIDDLE_X, 6,1), V(RIGHT-10, 8,1),
+                       V(0, MIDDLE_Y,1), V(MIDDLE_X, BOTTOM-6,1), V(RIGHT, MIDDLE_Y,1), V(MIDDLE_X, MIDDLE_Y,1),
+                       V(6, BOTTOM-4,1), V(RIGHT-6, BOTTOM-4,1),
+                       V(8, MIDDLE_Y,1), V(RIGHT-8, MIDDLE_Y,1), V(RIGHT, BOTTOM,1),
+                       V(...line_delta(BOTTOM_LEFT, TOP_RIGHT, -6).v ,1)
+                     ]
    },
-   "objectives": [  V(6, 4,1), V(MIDDLE_X, 6,1), V(RIGHT-10, 8,1),
-                    V(0, MIDDLE_Y,1), V(MIDDLE_X, BOTTOM-6,1), V(RIGHT, MIDDLE_Y,1), V(MIDDLE_X, MIDDLE_Y,1),
-                    V(6, BOTTOM-4,1), V(RIGHT-6, BOTTOM-4,1),
-                    V(8, MIDDLE_Y,1), V(RIGHT-8, MIDDLE_Y,1), V(RIGHT, BOTTOM,1),
-                    V(...line_delta(BOTTOM_LEFT, TOP_RIGHT, -6).v ,1)
-                  ]
+   {
+      "set": "0 - test",
+      "name": "Center",
+      "deployments": {
+         "red": [ D(2, 6, 1), D(MIDDLE_X, 6, 1), D(RIGHT-2, 6, 1 ) ],
+         "blue": [ D(2, BOTTOM-6, 1), D(MIDDLE_X, BOTTOM-6, 1), D(RIGHT-2, BOTTOM-6, 1 )  ]
+      },
+      "objectives": [ V(MIDDLE_X, MIDDLE_Y,1) ]
    },
    
    /********** Unknown ******************/

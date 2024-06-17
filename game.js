@@ -90,8 +90,8 @@ const Z_INDEX = {
 
 const Color = {
    "DEBUG": "maroon",
-   "red": "rgba(217, 0, 29, 1)",
-   "blue": "rgba(13, 60, 100, 1)",
+   "red": "rgba(178, 0, 24, 1)",
+   "blue": "rgba(0, 98, 168, 1)",
    "background": "antiquewhite",
    "light": "moccasin",
    "round": "rgba(139, 189, 250, 1)",
@@ -262,17 +262,28 @@ function arrows_for_point( p ) {
 
    let result = [];
 
-   // Diagonal lines!
-   // rounding issues of course. 
-   if( line_test( TOP_LEFT, BOTTOM_RIGHT, p ) ) {
-      result.push( [TOP_LEFT, p] );
+   // Never need to draw arrows to the center point
+   if( p.x == MIDDLE_X && p.y == MIDDLE_Y ) {
+      return [];
    }
-   if( line_test( BOTTOM_LEFT, TOP_RIGHT, p ) ) {
-      result.push( [BOTTOM_LEFT, p] );
-   }
-   // if( line_test( V(RIGHT,0), V(0,BOTTOM), p ) ) {
-      
-   // }
+
+   // Diagonal lines! You onle ever need 1
+   // rounding issues of course.
+   // No need for diagonal arrows on the outer border
+   if( (p.x != 0 && p.x != RIGHT) || (p.y != 0 && p.y != BOTTOM ) ) {
+      if( line_test( TOP_LEFT, BOTTOM_RIGHT, p ) ) {
+         return [ [TOP_LEFT, p] ];
+      }
+      if( line_test( BOTTOM_RIGHT, TOP_LEFT, p ) ) {
+         return [  [BOTTOM_RIGHT, p] ];
+      }
+      if( line_test( BOTTOM_LEFT, TOP_RIGHT, p ) ) {
+         return [  [BOTTOM_LEFT, p] ];
+      }
+      if( line_test( TOP_RIGHT, BOTTOM_LEFT, p ) ) {
+         return [  [TOP_RIGHT, p] ];
+      }
+   } 
 
    // Horizontal lines
 
@@ -434,7 +445,7 @@ function objective( center ) {
 }
 
 function arrow( tail, head ) {
-   let text = distance_p2p(tail, head) + "\"";
+   let text = Math.fround(distance_p2p(tail, head)) + "\"";
    gfx_arrow( pix(tail), Z_INDEX.objective, pix(head), PPI*0.05, Color.arrow, text, PPI * 0.8 );
 }
 
