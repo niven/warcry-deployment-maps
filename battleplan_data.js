@@ -282,6 +282,46 @@ const predefined_battleplans = [
       "scoring": ["When the battle ends, each player adds up the total points value for the enemy fighters taken down by their warband. The player with the highest total wins the battle."],
       "rounds": 4
    },
+   /********** Scales of Talaxis ******************/
+   {
+      "set": "Scales of Talaxis",
+      "name": "Lurking Threats",
+   },
+   /********** Blood Hunt ******************/
+   {
+      "set": "Blood Hunt",
+      "name": "Starting Fervour",
+   },
+   /********** Nightmare Quest ******************/
+   {
+      "set": "Nightmare Quest",
+      "name": "Realmshaper Mishap",
+   },
+   /********** Heart of Ghur ******************/
+   {
+      "set": "Heart of Ghur",
+      "name": "Outflank",
+   },
+   /********** Red Harvest ******************/
+   {
+      "set": "Red Harvest",
+      "name": "Swift Attack",
+   },
+   /********** Starter Set ******************/
+   {
+      "set": "Starter Set",
+      "name": "Death Spiral",
+   },
+   /********** Catacombs ******************/
+   {
+      "set": "Catacombs",
+      "name": "Hold Fast",
+   },
+   /********** Sundered Fate ******************/
+   {
+      "set": "Sundered Fate",
+      "name": "Unknown Territory",
+   },
 ]
 .sort( (a,b) => ( (a.set ? a.set+" - " : "0") + a.name ).localeCompare(( (b.set ? b.set+" - " : "0") + b.name ), "en") );
 // above sort uses "set - name" for sorting
