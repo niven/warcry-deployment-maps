@@ -78,6 +78,7 @@ const predefined_battleplans = [
          "red": [ D(MIDDLE_X, 0, 2), D(MIDDLE_X-6, MIDDLE_Y, 1), D(RIGHT, MIDDLE_Y, 2 ) ],
          "blue": [ D(MIDDLE_X, BOTTOM, 2), D(MIDDLE_X+6, MIDDLE_Y, 1), D(0, MIDDLE_Y, 2 )  ]
       },
+      "matched_play": true
    },
    /********** FEROCIOUS GNARLWOOD II: Electric Boogaloo ******************/
    {
