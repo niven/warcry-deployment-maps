@@ -71,7 +71,14 @@ const predefined_battleplans = [
    },
    
    /********** Unknown ******************/
-
+   {
+      "set": "Unknown",
+      "name": "Fend for Yourselves",
+      "deployments": {
+         "red": [ D(MIDDLE_X, 0, 2), D(MIDDLE_X-6, MIDDLE_Y, 1), D(RIGHT, MIDDLE_Y, 2 ) ],
+         "blue": [ D(MIDDLE_X, BOTTOM, 2), D(MIDDLE_X+6, MIDDLE_Y, 1), D(0, MIDDLE_Y, 2 )  ]
+      },
+   },
    /********** FEROCIOUS GNARLWOOD II: Electric Boogaloo ******************/
    {
       "set": "The Ferocious Gnarlwood II",
@@ -296,7 +303,55 @@ const predefined_battleplans = [
    /********** Heart of Ghur ******************/
    {
       "set": "Heart of Ghur",
-      "name": "Outflank",
+      "name": "First Blood",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Death Blow",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Knife to the Back",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Bloodbath",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Stand-off",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "The Unseen Blade",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Clash of Blades",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Battle Lines",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Show of Strength",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Death Spiral",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "The Duel",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "Escalation",
+   },
+   {
+      "set": "Heart of Ghur",
+      "name": "",
    },
    /********** Red Harvest ******************/
    {
@@ -315,7 +370,7 @@ const predefined_battleplans = [
    },
    /********** Sundered Fate ******************/
    {
-      "set": "Sundered Fate",
+      "set": "Sundered Fate / Stealth and Stone",
       "name": "Unknown Territory",
    },
 ]
