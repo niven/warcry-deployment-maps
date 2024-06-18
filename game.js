@@ -100,7 +100,17 @@ function make_deployment_icons() {
             ctx.globalCompositeOperation = 'destination-in';
             draw_image( V(size/2,size/2), image, true, V(1,1) );
             ctx.globalCompositeOperation = 'destination-over';
-            draw_disk( V(size/2,size/2), size/2, Color[color] );
+            if( i == "dagger" ) {
+               draw_triangle( V(0,0), V(size,0), V(size/2, size), Color[color] );
+               // draw_triangle( V(size/2,0), V(0,size), V(size, size), Color[color] );
+            }
+            if( i == "shield" ) {
+               draw_disk( V(size/2,size/2), size/2, Color[color] );
+            }
+            if( i == "hammer" ) {
+               draw_plane( V(0,0), size, size, Color[color] );
+            }
+
             // put in the image cache
             ui.image_cache[color + "/" + i] = {
                "image": offscreen.transferToImageBitmap(),
