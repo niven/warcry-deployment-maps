@@ -188,6 +188,42 @@ const predefined_battleplans = [
       "scoring": ["At the end of each battle round, score 1 victory point for each quarter of the battlefield that has 1 or more friendly fighters wholly within it.", "At the end of the 4th battle round, each player scores 2 victory points for each treasure they are carrying."],
       "rounds": 4
    },
+   {
+      "set": "Tidal Pack",
+      "name": "Plant a Flag",
+   },
+   {
+      "set": "Tidal Pack",
+      "name": "Heroes' Graveyard",
+   },
+   {
+      "set": "Tidal Pack",
+      "name": "Heavy Head",
+   },
+   {
+      "set": "Tidal Pack",
+      "name": "Rising Dread",
+   },
+   {
+      "set": "Tidal Pack",
+      "name": "Helter Skelter",
+   },
+   {
+      "set": "Tidal Pack",
+      "name": "The Burning Past",
+   },
+   {
+      "set": "Tidal Pack",
+      "name": "Frantic Search",
+   },
+   {
+      "set": "Tidal Pack",
+      "name": "Great Hunt",
+   },
+   {
+      "set": "Tidal Pack",
+      "name": "Blood Tide",
+   },
 
 
    /********** Optimal Game State - Mark of Chaos v1.1 ******************/
