@@ -29,23 +29,32 @@ function make_deployment_icons() {
    ["dagger", "shield", "hammer"].forEach( i => {
       gfx_image_load( "img/"+i+".svg", function( image ){
          // make a blue and red version
+
          let ctx_main = ctx;
          ctx = offscreen_context;
-         draw_disk( V(size/2,size/2), size/2, Color.red );
-         draw_image( V(size/2,size/2), image, true, V(1,1) );
-         // put in the image cache
-         ui.image_cache["red/" + i] = {
-            "image": offscreen.transferToImageBitmap(),
-            "loaded": true
-         }
+         let original_composite_operation = ctx.globalCompositeOperation;
+         ["red", "blue"].forEach( color => {
+            draw_plane( V(0,0), size, size, Color.white);
+            ctx.globalCompositeOperation = 'destination-in';
+            draw_image( V(size/2,size/2), image, true, V(1,1) );
+            ctx.globalCompositeOperation = 'destination-over';
+            draw_disk( V(size/2,size/2), size/2, Color[color] );
+            ctx.globalCompositeOperation = original_composite_operation;
+            // put in the image cache
+            ui.image_cache[color + "/" + i] = {
+               "image": offscreen.transferToImageBitmap(),
+               "loaded": true
+            }
 
-         draw_disk( V(size/2,size/2), size/2, Color.blue );
-         draw_image( V(size/2,size/2), image, true, V(1,1) );
-         // put in the image cache
-         ui.image_cache["blue/" + i] = {
-            "image": offscreen.transferToImageBitmap(),
-            "loaded": true
-         }
+         });
+
+         // draw_disk( V(size/2,size/2), size/2, Color.blue );
+         // draw_image( V(size/2,size/2), image, true, V(1,1) );
+         // // put in the image cache
+         // ui.image_cache["blue/" + i] = {
+         //    "image": offscreen.transferToImageBitmap(),
+         //    "loaded": true
+         // }
 
          ctx = ctx_main;
 
@@ -102,8 +111,8 @@ const Color = {
    "arrow": "black",
    "bubble": {
       "objective": "rgba(250, 180, 0, 0.8)",
-      "red": "rgba(250, 80, 80, 0.8)",
-      "blue": "rgba(80, 80, 250, 0.8)"
+      "red": "rgba(178, 0, 24, 1)",
+      "blue": "rgba(0, 98, 168, 1)"
    },
    "transparant": "rgba(0,0,0,0)",
 };
