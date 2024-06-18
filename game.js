@@ -147,21 +147,17 @@ function init_battleplan(index) {
    // display the mission text parts
    ["blurb", "rounds"].forEach( e => document.getElementById(e).innerText = bp[e] == undefined ? "" : bp[e] );
    
-   ["scoring", "rules"].forEach( e => {
-      if( bp[e] == undefined ) {
-         return;
-      }
-
-      let element = document.getElementById(e);
+   if( bp["victory"] != undefined ) {
+      let element = document.getElementById("victory");
       while( element.firstChild ) {
          element.removeChild(element.firstChild);
       }
-      bp[e].forEach( r => {
+      bp["victory"].forEach( r => {
          let s = document.createElement("span")
          s.innerText = r;
          element.appendChild(s);
       });
-   });
+   }
 
    document.getElementById("title").innerText = `${bp.set} - ${bp.name}`;
 }

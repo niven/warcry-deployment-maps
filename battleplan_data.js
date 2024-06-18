@@ -81,8 +81,7 @@ const predefined_battleplans = [
          "blue": [ D(0, BOTTOM, 1), D(RIGHT, BOTTOM, 2), D(MIDDLE_X, BOTTOM, 1) ]
       },
       "objectives": [ V(3,6), V(MIDDLE_X-7, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y), V(MIDDLE_X+7, MIDDLE_Y), V(RIGHT-3,BOTTOM-6) ],
-      "rules": ["Fighters cannot control more than one objective at a time in this battleplan. If a fighter is within 3” of multiple objectives, starting with the player that took the first activation that battle round, players decide which objectives all of such friendly fighters are controlling.","Devastate their Ranks: At the end of each battle round, each player determines the total Wounds characteristic of enemy fighters that are taken down this battle. This is their devastation total. The player whose devastation total is higher scores 2 victory points."],
-      "scoring": ["At the end of each battle round, each player scores 1 victory point for each of the following that is true: They control any objective, They control two or more objectives, They control more objectives than their opponent.", "Glittering Hoard: After the initiative phase each battle round, if one player has fewer victory points, that player picks an objective. The player that controls that objective at the end of that battle round scores 1 additional victory point."],
+      "victory": ["Fighters cannot control more than one objective at a time in this battleplan. If a fighter is within 3” of multiple objectives, starting with the player that took the first activation that battle round, players decide which objectives all of such friendly fighters are controlling.","Devastate their Ranks: At the end of each battle round, each player determines the total Wounds characteristic of enemy fighters that are taken down this battle. This is their devastation total. The player whose devastation total is higher scores 2 victory points.", "At the end of each battle round, each player scores 1 victory point for each of the following that is true: They control any objective, They control two or more objectives, They control more objectives than their opponent.", "Glittering Hoard: After the initiative phase each battle round, if one player has fewer victory points, that player picks an objective. The player that controls that objective at the end of that battle round scores 1 additional victory point."],
       "rounds": 4
    },
    {
@@ -94,8 +93,7 @@ const predefined_battleplans = [
          "blue": [ D(RIGHT-6, MIDDLE_Y, 1), D(MIDDLE_X, 0, 2), D( ...(line_delta(TOP_RIGHT,BOTTOM_LEFT, -6).v), 2) ]
       },
       "objectives": [ V(MIDDLE_X,MIDDLE_Y-6), V(MIDDLE_X, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y+6) ],
-      "rules": [],
-      "scoring": ["At the end of each battle round, the players score 1 victory point for holding 1 or more objectives, 1 victory point for holding more objectives than the other player and 1 victory point for holding 2 or more objectives.", "A Bloody Victory, or None At All: Score 1 victory point each time an enemy fighter within 3\" of an objective is taken down."],
+      "victory": ["At the end of each battle round, the players score 1 victory point for holding 1 or more objectives, 1 victory point for holding more objectives than the other player and 1 victory point for holding 2 or more objectives.", "A Bloody Victory, or None At All: Score 1 victory point each time an enemy fighter within 3\" of an objective is taken down."],
       "rounds": 4
    },
    {
@@ -107,8 +105,7 @@ const predefined_battleplans = [
          "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D(MIDDLE_X, BOTTOM-3, 1)  ]
       },
       "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(RIGHT-3, BOTTOM-3,1) ],
-      "rules": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.","If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.","After a second loot action is made within 1\" of an objective, remove that objective from the battlefield."],
-      "scoring": ["When the battle ends, each player scores 2 victory points for each friendly fighter that is carrying treasure."],
+      "victory": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.","If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.","After a second loot action is made within 1\" of an objective, remove that objective from the battlefield.","When the battle ends, each player scores 2 victory points for each friendly fighter that is carrying treasure."],
       "rounds": 4
    },
    {
@@ -150,8 +147,7 @@ const predefined_battleplans = [
          "blue": [ D(RIGHT-3, MIDDLE_Y-3, 1), D(QUARTER_X, 0, 2, Edge(QUARTER_X, 0, QUARTER_X)), D(MIDDLE_X-3, BOTTOM-3, 1)  ]
       },
       "objectives": [ V(9, 6), V(RIGHT-5, 3), V(MIDDLE_X, MIDDLE_Y), V(5, BOTTOM-3), V(RIGHT-9, BOTTOM-6) ],
-      "rules": [],
-      "scoring": ["At the end of each battle round, each player scores 1 victory point for each objective they control.", "New Moon Secondary: At the beginning of each battle round, the player with the fewest victory points picks an objective. The BLOOD MOON's light shines down on that objective. Any time a fighter is taken down while partially or wholly within the light of the BLOOD MOON, its controller's opponent scores 2 Victory Points"],
+      "victory": ["At the end of each battle round, each player scores 1 victory point for each objective they control.", "New Moon Secondary: At the beginning of each battle round, the player with the fewest victory points picks an objective. The BLOOD MOON's light shines down on that objective. Any time a fighter is taken down while partially or wholly within the light of the BLOOD MOON, its controller's opponent scores 2 Victory Points"],
       "rounds": 4
    },
 
@@ -184,8 +180,7 @@ const predefined_battleplans = [
          "blue": [ D(QUARTER_X, BOTTOM, 2, Edge(QUARTER_X, BOTTOM, QUARTER_X)), D(0, MIDDLE_Y, 1), D(MIDDLE_X, MIDDLE_Y-6, 1)  ]
       },
       "objectives": [ V(8,6,1), V(RIGHT-8, 6,1), V(MIDDLE_X,MIDDLE_Y,1), V(8, BOTTOM-6,1), V(RIGHT-8, BOTTOM-6,1) ],
-      "rules": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.", "If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.", "After a loot action is made within 1\" of an objective, remove that objective from the battlefield."],
-      "scoring": ["At the end of each battle round, score 1 victory point for each quarter of the battlefield that has 1 or more friendly fighters wholly within it.", "At the end of the 4th battle round, each player scores 2 victory points for each treasure they are carrying."],
+      "victory": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.", "If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.", "After a loot action is made within 1\" of an objective, remove that objective from the battlefield.","At the end of each battle round, score 1 victory point for each quarter of the battlefield that has 1 or more friendly fighters wholly within it.", "At the end of the 4th battle round, each player scores 2 victory points for each treasure they are carrying."],
       "rounds": 4
    },
    {
@@ -278,8 +273,7 @@ const predefined_battleplans = [
          "blue": [ D(MIDDLE_X, BOTTOM, 1), D(MIDDLE_X, MIDDLE_Y-6, 1), D(8, 6, 1)  ]
       },
       "objectives": [],
-      "rules": ["The battle ends immediately if all of the fighters in a single warband's Shield and Dagger battle groups are taken down. When this happens the player of the other warband wins."],
-      "scoring": ["When the battle ends, each player adds up the total points value for the enemy fighters taken down by their warband. The player with the highest total wins the battle."],
+      "victory": ["The battle ends immediately if all of the fighters in a single warband's Shield and Dagger battle groups are taken down. When this happens the player of the other warband wins.","When the battle ends, each player adds up the total points value for the enemy fighters taken down by their warband. The player with the highest total wins the battle."],
       "rounds": 4
    },
    /********** Scales of Talaxis ******************/
