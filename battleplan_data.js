@@ -106,7 +106,7 @@ const predefined_battleplans = [
          "red": [ D(0, 3, 2), D(RIGHT, MIDDLE_Y, 2), D(MIDDLE_X, 3, 1) ],
          "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D(MIDDLE_X, BOTTOM-3, 1)  ]
       },
-      "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(BOTTOM-3, BOTTOM-3,1) ],
+      "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(RIGHT-3, BOTTOM-3,1) ],
       "rules": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.","If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.","After a second loot action is made within 1\" of an objective, remove that objective from the battlefield."],
       "scoring": ["When the battle ends, each player scores 2 victory points for each friendly fighter that is carrying treasure."],
       "rounds": 4
