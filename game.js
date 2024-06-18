@@ -20,26 +20,24 @@ const IMAGE = {
 
 function make_deployment_icons() {
    
-   // let main_ctx = ctx;
-   // ctx = offscreen.getContext("2d");
-   const size = 256;//DEPLOYMENT_TOKEN_SIZE_INCH * PPI;
+   const size = 256;
    const offscreen = new OffscreenCanvas(size, size);
    let offscreen_context = offscreen.getContext('2d');
-   // load icon
+
    ["dagger", "shield", "hammer"].forEach( i => {
       gfx_image_load( "img/"+i+".svg", function( image ){
-         // make a blue and red version
 
+         // switch drawing context inside the callback
          let ctx_main = ctx;
          ctx = offscreen_context;
-         let original_composite_operation = ctx.globalCompositeOperation;
+         // make a blue and red version
          ["red", "blue"].forEach( color => {
+            ctx.globalCompositeOperation = 'source-over';
             draw_plane( V(0,0), size, size, Color.white);
             ctx.globalCompositeOperation = 'destination-in';
             draw_image( V(size/2,size/2), image, true, V(1,1) );
             ctx.globalCompositeOperation = 'destination-over';
             draw_disk( V(size/2,size/2), size/2, Color[color] );
-            ctx.globalCompositeOperation = original_composite_operation;
             // put in the image cache
             ui.image_cache[color + "/" + i] = {
                "image": offscreen.transferToImageBitmap(),
@@ -48,19 +46,11 @@ function make_deployment_icons() {
 
          });
 
-         // draw_disk( V(size/2,size/2), size/2, Color.blue );
-         // draw_image( V(size/2,size/2), image, true, V(1,1) );
-         // // put in the image cache
-         // ui.image_cache["blue/" + i] = {
-         //    "image": offscreen.transferToImageBitmap(),
-         //    "loaded": true
-         // }
-
          ctx = ctx_main;
 
       });
    });
-   // ctx = main_ctx;
+
 }
 /**
  *           1.5π
