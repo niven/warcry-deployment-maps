@@ -218,7 +218,12 @@ function map_init() {
    let scale = target_width / source_width;
    world.map.scale.deployment_token = V(scale, scale);
 
-   init_battleplan(0);
+   // load plan based on the short name
+   if( params["plan"] != undefined ) {
+      world.map.current_battleplan = predefined_battleplans.findIndex( p => p.key == params["plan"] );
+      init_battleplan(world.map.current_battleplan);
+   }
+
 }
 
 

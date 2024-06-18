@@ -46,6 +46,7 @@ const predefined_battleplans = [
 
    /*********** Test maps **************************************************/
    {
+      "key": "T-0",
       "set": "0 - test",
       "name": "GFX Test Deployment",
       "deployments": {
@@ -139,6 +140,7 @@ const predefined_battleplans = [
       "objectives": [ V(3, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y), V(RIGHT-3, MIDDLE_Y) ]
    },
    {
+      "key": "FG2-Blood-Moon",
       "set": "The Ferocious Gnarlwood II",
       "name": "Blood Moon",
       "blurb": "The New Moon begins to take on a dark and sinister visage, shining a bloodthirsty light on places where violence seems inevitable.",

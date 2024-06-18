@@ -18,6 +18,8 @@ var CANVAS_WIDTH = 800;
 // These are calculated whenever the canvas width changes and on init()
 var CANVAS_HEIGHT, PPI, BOARD_ORIGIN_INCH, BOARD_ORIGIN_PIXELS;
 
+const params = {};
+
 var ctx, canvas;
 
 var running = true;
@@ -75,6 +77,11 @@ function setup_init() {
 /* This runs once and sets up the event loop. Put any initialization here
 */
 function main() {
+
+	// read any url params
+	for(const [key, value] of new URLSearchParams(window.location.search)) {
+		params[key] = value;
+	}
 
 	canvas = document.createElement("canvas");
 
