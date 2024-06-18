@@ -18,40 +18,7 @@ const IMAGE = {
    }
 }
 
-function make_deployment_icons() {
-   
-   const size = 256;
-   const offscreen = new OffscreenCanvas(size, size);
-   let offscreen_context = offscreen.getContext('2d');
 
-   ["dagger", "shield", "hammer"].forEach( i => {
-      gfx_image_load( "img/"+i+".svg", function( image ){
-
-         // switch drawing context inside the callback
-         let ctx_main = ctx;
-         ctx = offscreen_context;
-         // make a blue and red version
-         ["red", "blue"].forEach( color => {
-            ctx.globalCompositeOperation = 'source-over';
-            draw_plane( V(0,0), size, size, Color.white);
-            ctx.globalCompositeOperation = 'destination-in';
-            draw_image( V(size/2,size/2), image, true, V(1,1) );
-            ctx.globalCompositeOperation = 'destination-over';
-            draw_disk( V(size/2,size/2), size/2, Color[color] );
-            // put in the image cache
-            ui.image_cache[color + "/" + i] = {
-               "image": offscreen.transferToImageBitmap(),
-               "loaded": true
-            }
-
-         });
-
-         ctx = ctx_main;
-
-      });
-   });
-
-}
 /**
  *           1.5π
  *          =  = 
@@ -93,7 +60,7 @@ const Color = {
    "blue": "rgba(0, 98, 168, 1)",
    "background": "antiquewhite",
    "light": "moccasin",
-   "round": "rgba(139, 189, 250, 1)",
+   "round": "#06F5ED",
    "brown": "peru",
    "white": "oldlace",
    "black": "black",
@@ -114,12 +81,47 @@ const HAMMER = 2;
 
 const GROUP_NAME = ["dagger", "shield", "hammer"];
 
+function make_deployment_icons() {
+   
+   const size = 256;
+   const offscreen = new OffscreenCanvas(size, size);
+   let offscreen_context = offscreen.getContext('2d');
+
+   ["dagger", "shield", "hammer"].forEach( i => {
+      gfx_image_load( "img/"+i+".svg", function( image ){
+
+         // switch drawing context inside the callback
+         let ctx_main = ctx;
+         ctx = offscreen_context;
+         // make a blue and red version
+         ["red", "blue"].forEach( color => {
+            ctx.globalCompositeOperation = 'source-over';
+            draw_plane( V(0,0), size, size, Color.white);
+            ctx.globalCompositeOperation = 'destination-in';
+            draw_image( V(size/2,size/2), image, true, V(1,1) );
+            ctx.globalCompositeOperation = 'destination-over';
+            draw_disk( V(size/2,size/2), size/2, Color[color] );
+            // put in the image cache
+            ui.image_cache[color + "/" + i] = {
+               "image": offscreen.transferToImageBitmap(),
+               "loaded": true
+            }
+
+         });
+
+         ctx = ctx_main;
+
+      });
+   });
+
+}
+
 function init_battleplan(index) {
    world.map.current_battleplan = index;
    let bp = predefined_battleplans[index];
 
    // Positioning arrows for objectives
-   world.map.arrows = bp.objectives.flatMap( o => arrows_for_point( V(o.x, o.y) ) );
+   world.map.arrows = bp.objectives == undefined ? [] : bp.objectives.flatMap( o => arrows_for_point( V(o.x, o.y) ) );
 
    // Positioning arrows for deployment tokens except for edges
    ["red", "blue"].forEach( color => {

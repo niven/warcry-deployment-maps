@@ -141,6 +141,19 @@ const predefined_battleplans = [
       },
       "objectives": [ V(3, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y), V(RIGHT-3, MIDDLE_Y) ]
    },
+   {
+      "set": "The Ferocious Gnarlwood II",
+      "name": "Blood Moon",
+      "blurb": "The New Moon begins to take on a dark and sinister visage, shining a bloodthirsty light on places where violence seems inevitable.",
+      "deployments": {
+         "red": [ D(3, MIDDLE_Y+3, 1), D(MIDDLE_X+QUARTER_X, BOTTOM, 2, Edge(MIDDLE_X+QUARTER_X, BOTTOM, QUARTER_X)), D(MIDDLE_X+3, 3, 1) ],
+         "blue": [ D(RIGHT-3, MIDDLE_Y-3, 1), D(QUARTER_X, 0, 2, Edge(QUARTER_X, 0, QUARTER_X)), D(MIDDLE_X-3, BOTTOM-3, 1)  ]
+      },
+      "objectives": [ V(9, 6), V(RIGHT-5, 3), V(MIDDLE_X, MIDDLE_Y), V(5, BOTTOM-3), V(RIGHT-9, BOTTOM-6) ],
+      "rules": [],
+      "scoring": ["At the end of each battle round, each player scores 1 victory point for each objective they control.", "New Moon Secondary: At the beginning of each battle round, the player with the fewest victory points picks an objective. The BLOOD MOON's light shines down on that objective. Any time a fighter is taken down while partially or wholly within the light of the BLOOD MOON, its controller's opponent scores 2 Victory Points"],
+      "rounds": 4
+   },
 
    /********** The Salty Sea Tidal Pack ******************/
    {
@@ -188,7 +201,26 @@ const predefined_battleplans = [
       },
       "objectives": [ V(RIGHT-8, 6), V(MIDDLE_X, MIDDLE_Y), V(8, BOTTOM-6) ]
    },
-
+   {
+      "set": "Mark of Chaos",
+      "name": "Sprint",
+   },
+   {
+      "set": "Mark of Chaos",
+      "name": "Fight for Quarters",
+   },
+   {
+      "set": "Mark of Chaos",
+      "name": "Borderlands",
+   },
+   {
+      "set": "Mark of Chaos",
+      "name": "Riverbed",
+   },
+   {
+      "set": "Mark of Chaos",
+      "name": "The Cross",
+   },
    /********** Bladeborn Battles. 600 points, max 9 fighters ******************/
    {
       "set": "Bladeborn Battles",
