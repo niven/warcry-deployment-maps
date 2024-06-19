@@ -4,10 +4,12 @@ var DEBUG = false;
 var SHOW_FPS = false;
 var SHOW_GRID = false;
 
+// Variables changed through user controls on the page
 var SHOW_BACKGROUND = true;
 var SHOW_BUBBLE = true;
 var SHOW_ARROW = true;
 var SHOW_AXIS = false;
+var MATCHED_PLAY = false; // Filter deployments by matched play
 
 const BOARD_BACKGROUND_COLOR = "cornsilk";
 const BOARD_WIDTH_INCH = 30;
@@ -50,6 +52,7 @@ var controls = {
 	"bubble_toggle": { "dom_id": "bubble_toggle", "var": "SHOW_BUBBLE" },
 	"axis_toggle": { "dom_id": "axis_toggle", "var": "SHOW_AXIS" },
 	"arrow_toggle": { "dom_id": "arrow_toggle", "var": "SHOW_ARROW" },
+	"matched_play_toggle": { "dom_id": "matched_play_toggle", "var": "MATCHED_PLAY" },
 	"canvas_width": { "dom_id": "canvas_width", "var": "CANVAS_WIDTH" }
 }
 
