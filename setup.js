@@ -54,6 +54,7 @@ var controls = {
 	"arrow_toggle": { "dom_id": "arrow_toggle", "var": "SHOW_ARROW" },
 	"matched_play_toggle": { "dom_id": "matched_play_toggle", "var": "MATCHED_PLAY", "onchange": function(val) {
 		console.log("MP: " + val);
+		deployment_list(); // update the deployment list
 	} },
 	"canvas_width": { "dom_id": "canvas_width", "var": "CANVAS_WIDTH" }
 }

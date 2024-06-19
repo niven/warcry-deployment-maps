@@ -81,6 +81,8 @@ const HAMMER = 2;
 
 const GROUP_NAME = ["dagger", "shield", "hammer"];
 
+var filtered_battleplans = predefined_battleplans;
+
 function make_deployment_icons() {
    
    const size = 256;
@@ -128,7 +130,7 @@ function make_deployment_icons() {
 
 function init_battleplan(index) {
    world.map.current_battleplan = index;
-   let bp = predefined_battleplans[index];
+   let bp = filtered_battleplans[index];
 
    // Positioning arrows for objectives
    world.map.arrows = bp.objectives == undefined ? [] : bp.objectives.flatMap( o => arrows_for_point( V(o.x, o.y) ) );
@@ -165,7 +167,12 @@ function init_battleplan(index) {
 // turn the list of deployments into groups and display as a select menu
 function deployment_list() {
    let groups = {};
-   predefined_battleplans.forEach( e => {
+
+   let plans = MATCHED_PLAY ? predefined_battleplans.filter( p => p.matched_play ) : predefined_battleplans;
+
+   plans = plans.filter( p => p.deployments ); // TEMP: retain only ones with deployments
+
+   plans.forEach( e => {
       if( groups[e.set] == undefined ) {
          groups[e.set] = [];
       }
@@ -501,7 +508,7 @@ function map_draw() {
       return;
    }
 
-   var bp = predefined_battleplans[world.map.current_battleplan];
+   var bp = filtered_battleplans[world.map.current_battleplan];
 
    // Put deployment group token on the map based on current battleplan
    ["red", "blue"].forEach( color => {
