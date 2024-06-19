@@ -52,7 +52,9 @@ var controls = {
 	"bubble_toggle": { "dom_id": "bubble_toggle", "var": "SHOW_BUBBLE" },
 	"axis_toggle": { "dom_id": "axis_toggle", "var": "SHOW_AXIS" },
 	"arrow_toggle": { "dom_id": "arrow_toggle", "var": "SHOW_ARROW" },
-	"matched_play_toggle": { "dom_id": "matched_play_toggle", "var": "MATCHED_PLAY" },
+	"matched_play_toggle": { "dom_id": "matched_play_toggle", "var": "MATCHED_PLAY", "onchange": function(val) {
+		console.log("MP: " + val);
+	} },
 	"canvas_width": { "dom_id": "canvas_width", "var": "CANVAS_WIDTH" }
 }
 
@@ -124,8 +126,12 @@ function read_control_values() {
 				new_value = Number.parseFloat( el.value );
 		}
 		
-		// console.log( key + " from " + window[controls[key].var] + " to " + new_value );
-		window[ controls[key].var ] = new_value;
+		if( window[controls[key].var] != new_value ) {
+			window[ controls[key].var ] = new_value;
+			if( controls[key].onchange != undefined ) {
+				controls[key].onchange( new_value );
+			}
+		}
 	}
 
 	control_values_need_update = false;
