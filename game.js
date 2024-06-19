@@ -162,12 +162,8 @@ function init_battleplan(index) {
    document.getElementById("title").innerText = `${bp.set} - ${bp.name}`;
 }
 
-
-function map_init() {
-
-   ui_add_click_handler( process_click );
-
-   // turn the list of deployments into groups and display as a select menu
+// turn the list of deployments into groups and display as a select menu
+function deployment_list() {
    let groups = {};
    predefined_battleplans.forEach( e => {
       if( groups[e.set] == undefined ) {
@@ -181,6 +177,14 @@ function map_init() {
       groups, 
       onOptionSelect( init_battleplan )
    );
+
+}
+
+function map_init() {
+
+   ui_add_click_handler( process_click );
+
+   deployment_list();
 
    world.map = {
       "PPI": 0, // Pixels Per Inch. Calculated after canvas creation
