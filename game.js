@@ -167,12 +167,13 @@ function init_battleplan(index) {
 // turn the list of deployments into groups and display as a select menu
 function deployment_list() {
    let groups = {};
+   console.log("MP", MATCHED_PLAY);
 
-   let plans = MATCHED_PLAY ? predefined_battleplans.filter( p => p.matched_play ) : predefined_battleplans;
+   filtered_battleplans = predefined_battleplans.filter( p => p.deployments ); // TEMP: retain only ones with deployments
+   filtered_battleplans = MATCHED_PLAY ? filtered_battleplans.filter( p => p.matched_play ) : filtered_battleplans;
 
-   plans = plans.filter( p => p.deployments ); // TEMP: retain only ones with deployments
 
-   plans.forEach( e => {
+   filtered_battleplans.forEach( e => {
       if( groups[e.set] == undefined ) {
          groups[e.set] = [];
       }
