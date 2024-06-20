@@ -305,6 +305,13 @@ const predefined_battleplans = [
    {
       "set": "Heart of Ghur",
       "name": "First Blood",
+      "matched_play": true,
+      "blurb": "yoyo",
+      "deployments": {
+         "red": [ D(MIDDLE_X-9, MIDDLE_Y, 1), D( 0, MIDDLE_Y, 2, Edge(0, MIDDLE_Y, MIDDLE_Y) ), D(MIDDLE_X, 0, 1) ],
+         "blue": [ D(MIDDLE_X+9, MIDDLE_Y, 1), D(RIGHT, MIDDLE_Y, 2, Edge( RIGHT, MIDDLE_Y, MIDDLE_Y ) ), D(MIDDLE_X, BOTTOM, 1) ]
+      },
+      "objectives": []
    },
    {
       "set": "Heart of Ghur",
