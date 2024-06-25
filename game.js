@@ -131,6 +131,7 @@ function make_deployment_icons() {
 function init_battleplan(index) {
    world.map.current_battleplan = index;
    let bp = filtered_battleplans[index];
+   console.log(filtered_battleplans);
 
    // Positioning arrows for objectives
    world.map.arrows = bp.objectives == undefined ? [] : bp.objectives.flatMap( o => arrows_for_point( V(o.x, o.y) ) );
