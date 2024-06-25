@@ -126,6 +126,13 @@ function make_deployment_icons() {
       });
    });
 
+   // Calculate scaling factor for deployment tokens.
+   // Assume the images are square and all the same size
+   let source_width = ui.image_cache[IMAGE.deployment["red"][0]].image.width;
+   let target_width = DEPLOYMENT_TOKEN_SIZE_INCH * PPI;
+   let scale = target_width / source_width;
+   world.map.scale.deployment_token = V(scale, scale);
+
 }
 
 function init_battleplan(index) {
@@ -216,20 +223,6 @@ function map_init() {
    } );
 
    make_deployment_icons();
-
-   // load the deployment tokens
-   ["red", "blue"].forEach( color => {
-      [DAGGER, SHIELD, HAMMER].forEach( group => {
-         gfx_image_load( IMAGE.deployment[color][group] );
-      });
-   });
-
-   // Calculate scaling factor for deployment tokens.
-   // Assume the images are square and all the same size
-   let source_width = ui.image_cache[IMAGE.deployment["red"][0]].image.width;
-   let target_width = DEPLOYMENT_TOKEN_SIZE_INCH * PPI;
-   let scale = target_width / source_width;
-   world.map.scale.deployment_token = V(scale, scale);
 
    // load plan based on the short name
    if( params["plan"] != undefined ) {
