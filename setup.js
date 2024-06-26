@@ -14,7 +14,7 @@ var MATCHED_PLAY = false; // Filter deployments by matched play
 const BOARD_BACKGROUND_COLOR = "cornsilk";
 const BOARD_WIDTH_INCH = 30;
 const BOARD_HEIGHT_INCH = 22;
-const BOARD_MARGIN_INCH = 2.5;
+const BOARD_MARGIN_INCH = 4;
 
 var CANVAS_WIDTH = 800;
 // These are calculated whenever the canvas width changes and on init()

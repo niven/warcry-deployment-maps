@@ -15,7 +15,8 @@ const IMAGE = {
       // Source: Squirem's AoS collection from here: https://drive.google.com/drive/folders/1bWYVVVB90Xxg5RVf4eswfT1xJaVzgYCk
       "red": ["img/dagger.svg", "img/deployment_red_shield.png", "img/deployment_red_hammer.png"],
       "blue": ["img/dagger.svg", "img/deployment_blue_shield.png", "img/deployment_blue_hammer.png"]
-   }
+   },
+   "matched_play": "img/matched_play.svg"
 }
 
 
@@ -220,6 +221,13 @@ function map_init() {
       let x = BOARD_WIDTH_INCH * PPI / image.width;
       let y = BOARD_HEIGHT_INCH * PPI / image.height;
       world.map.scale.background = V(x, y);
+   } );
+
+   // load the matched play icon
+   gfx_image_load( IMAGE.matched_play, (image) => {
+      let x = 2 * PPI / image.width;
+      let y = 2 * PPI / image.height;
+      world.map.scale.matched_play = V(x, y);
    } );
 
    make_deployment_icons();
@@ -541,6 +549,10 @@ function map_draw() {
       world.map.arrows.forEach( a => arrow( a[1], a[0] ) );
    }
    
+   // Put the matched play icon on the board
+   if( bp.matched_play ) {
+      ui_image( V(2 * PPI, (BOARD_HEIGHT_INCH + 2*BOARD_MARGIN_INCH - 2) * PPI ), Z_INDEX.background + 1 , IMAGE.matched_play, true, world.map.scale.matched_play );
+   }
 }
 
 /******************** Debugging *****************************************/
