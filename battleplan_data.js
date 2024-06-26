@@ -323,6 +323,11 @@ const predefined_battleplans = [
    {
       "set": "Heart of Ghur",
       "name": "Knife to the Back",
+      "matched_play": true,
+      "deployments": {
+         "red": [ D(MIDDLE_X, BOTTOM, 2, Edge(MIDDLE_X, BOTTOM, MIDDLE_X)), D( MIDDLE_X, MIDDLE_Y-6, 1), D(0, MIDDLE_Y, 1) ],
+         "blue": [ D(MIDDLE_X, 0, 2, Edge(MIDDLE_X, 0, MIDDLE_X)), D(MIDDLE_X, MIDDLE_Y+6, 1 ), D(RIGHT, MIDDLE_Y, 1) ]
+      }
    },
    {
       "set": "Heart of Ghur",
