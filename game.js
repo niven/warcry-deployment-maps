@@ -85,6 +85,56 @@ const GROUP_NAME = ["dagger", "shield", "hammer"];
 
 var filtered_battleplans = predefined_battleplans;
 
+function map_init() {
+
+   ui_add_click_handler( process_click );
+
+   deployment_list();
+
+   world.map = {
+      "PPI": 0, // Pixels Per Inch. Calculated after canvas creation
+      "current_battleplan": -1, // -1 is no plan set
+      "scale": {},
+      "arrows": [] // arrows to point to deployments or objectives
+   };
+   world.debug.map = {
+      "text": [],
+      "lines": []
+   }
+
+   // content
+
+   // load the board image
+   gfx_image_load( IMAGE.board, (image) => {
+      let x = (BOARD_WIDTH_INCH + 2*BOARD_MARGIN_INCH) * PPI / image.width;
+      let y = (BOARD_HEIGHT_INCH + 2*BOARD_MARGIN_INCH) * PPI / image.height;
+      world.map.scale.board = V(x, y);
+   } );
+
+   // load the background image
+   gfx_image_load( IMAGE.background, (image) => {
+      let x = BOARD_WIDTH_INCH * PPI / image.width;
+      let y = BOARD_HEIGHT_INCH * PPI / image.height;
+      world.map.scale.background = V(x, y);
+   } );
+
+   // load the matched play icon
+   gfx_image_load( IMAGE.matched_play, (image) => {
+      let x = 2 * PPI / image.width;
+      let y = 2 * PPI / image.height;
+      world.map.scale.matched_play = V(x, y);
+   } );
+
+   make_deployment_icons();
+
+   // load plan based on the short name
+   if( params["plan"] != undefined ) {
+      world.map.current_battleplan = predefined_battleplans.findIndex( p => p.key == params["plan"] );
+      init_battleplan(world.map.current_battleplan);
+   }
+
+}
+
 function make_deployment_icons() {
    
    const size = 256;
@@ -198,48 +248,7 @@ function deployment_list() {
 
 }
 
-function map_init() {
 
-   ui_add_click_handler( process_click );
-
-   deployment_list();
-
-   world.map = {
-      "PPI": 0, // Pixels Per Inch. Calculated after canvas creation
-      "current_battleplan": -1, // -1 is no plan set
-      "scale": {},
-      "arrows": [] // arrows to point to deployments or objectives
-   };
-   world.debug.map = {
-      "text": [],
-      "lines": []
-   }
-
-   // content
-
-   // load the background image
-   gfx_image_load( IMAGE.background, (image) => {
-      let x = BOARD_WIDTH_INCH * PPI / image.width;
-      let y = BOARD_HEIGHT_INCH * PPI / image.height;
-      world.map.scale.background = V(x, y);
-   } );
-
-   // load the matched play icon
-   gfx_image_load( IMAGE.matched_play, (image) => {
-      let x = 2 * PPI / image.width;
-      let y = 2 * PPI / image.height;
-      world.map.scale.matched_play = V(x, y);
-   } );
-
-   make_deployment_icons();
-
-   // load plan based on the short name
-   if( params["plan"] != undefined ) {
-      world.map.current_battleplan = predefined_battleplans.findIndex( p => p.key == params["plan"] );
-      init_battleplan(world.map.current_battleplan);
-   }
-
-}
 
 
 /* Click on the canvas, find out what you clicked on
