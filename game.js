@@ -10,6 +10,7 @@ let DEPLOYMENT_TOKEN_SIZE_INCH = 1.5;
 
 const IMAGE = {
    "background": "img/background/desert.jpg",
+   "board": "img/background/bg-ghur-401.jpg",
    "deployment": {
       // These index as D/S/H
       // Source: Squirem's AoS collection from here: https://drive.google.com/drive/folders/1bWYVVVB90Xxg5RVf4eswfT1xJaVzgYCk
@@ -489,6 +490,8 @@ function map_draw() {
    ui.render_list = []; // Clear the list of things to draw
 
    game_draw_debug(); // Draw any debugging (lines, grids, mouse cursor distance to clickables, ...)
+
+   ui_image( V(0,0), Z_INDEX.background+1, IMAGE.board, false, world.map.scale.board );
 
    if( SHOW_BACKGROUND ) {
       background( IMAGE.background );
