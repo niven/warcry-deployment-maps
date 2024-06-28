@@ -111,6 +111,10 @@ function render() {
          draw_rect( g.p, g.width, g.height, g.color );
          break;
       }
+      case "plane": {
+         draw_plane( g.p, g.width, g.height, g.color );
+         break;
+      }
       case "text": {
          fill_text( g.p, g.text, g.color, g.font );
          break;  
@@ -303,6 +307,16 @@ function gfx_rect( location, z_index, width, height, color, centered = false ) {
       "centered": centered
    };
    ui.render_list.push( Graphic( "rect", location, z_index, attributes ) );   
+}
+
+function gfx_plane( location, z_index, width, height, color, centered = false ) {
+   let attributes = {
+      "width": width,
+      "height": height,
+      "color": color,
+      "centered": centered
+   };
+   ui.render_list.push( Graphic( "plane", location, z_index, attributes ) );
 }
 
 function gfx_arrow( tail, z_index, head, width, color, text, font_size ) {
