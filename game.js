@@ -60,7 +60,7 @@ const Color = {
    "DEBUG": "maroon",
    "red": "rgba(178, 0, 24, 1)",
    "blue": "rgba(0, 98, 168, 1)",
-   "background": "antiquewhite",
+   "background": "rgba(220, 193, 175, 0.4)",
    "light": "moccasin",
    "round": "#06F5ED",
    "brown": "peru",
@@ -504,6 +504,8 @@ function map_draw() {
 
    if( SHOW_BACKGROUND ) {
       background( IMAGE.background );
+   } else {
+      gfx_plane( pix(ZERO), Z_INDEX.background, BOARD_WIDTH_INCH * PPI, BOARD_HEIGHT_INCH * PPI , Color.background );
    }
 
    // Draw a border around the board
