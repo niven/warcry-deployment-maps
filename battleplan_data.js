@@ -332,6 +332,11 @@ const predefined_battleplans = [
    {
       "set": "Heart of Ghur",
       "name": "Bloodbath",
+      "matched_play": true,
+      "deployments": {
+         "red": [ D(MIDDLE_X, MIDDLE_Y-6, 1), D( 8, 6, 1), D(RIGHT, MIDDLE_Y, 2) ],
+         "blue": [ D(MIDDLE_X, MIDDLE_Y+6, 1), D(RIGHT-8, BOTTOM-6, 1 ), D(0, MIDDLE_Y, 2) ]
+      }
    },
    {
       "set": "Heart of Ghur",
