@@ -456,6 +456,14 @@ const predefined_battleplans = [
    {
       "set": "Test of Champions",
       "name": "Cursed Prize",
+      "blurb": "Two warbands are fighting over a relic too powerful to hold, yet too dangerous to be in the hands of a rival. Their hardiest fighters must commit to a test of endurance to claim the prize.",
+      "deployments": {
+         "red": [ D(MIDDLE_X, BOTTOM, 2, Edge(MIDDLE_X, BOTTOM, MIDDLE_X)), D(RIGHT-4, MIDDLE_Y, 1), D(MIDDLE_X, 3, 1) ],
+         "blue": [ D(MIDDLE_X, 0, 2, Edge(MIDDLE_X, 0, MIDDLE_X)), D(4, MIDDLE_Y, 1), D(MIDDLE_X, BOTTOM-3, 1)  ]
+      },
+      "objectives": [ V(MIDDLE_X, MIDDLE_Y) ],
+      "victory": ["Place a treasure token on a platform or the battlefield floor, as close as possible to the centre of the battlefield.", "The treasure token or the fighter carrying the treasure may deal curse damage. When the treasure token or the fighter carrying the treasure deals curse damage to a fighter, allocate a number of damage points to that fighter equal to half their 'remaining wounds', rounding down. A fighter's 'remaining wounds' are found by subtracting the damage points allocated to that fighter from that fighter's Wounds characteristic.","A fighter carrying the treasure can use the Lifeleech Curse ability.", "[Triple] Lifeleech Curse: Pick a visible enemy fighter within 8\" of this fighter. This fighter deals curse damage to that fighter. Then, remove a number of damage points allocated to this fighter equal to half the number allocated to that enemy fighter by this ability, rounding down.","When a fighter drops the treasure token, the treasure token deals curse damage to that fighter.","At the beginning of each battle round, the treasure token deals curse damage to each fighter within 3\". If the treasure token is being carried, instead the fighter carrying the treasure token deal curse damage to themselves. They then allocate the same amount of damage to each other fighter within 3\"."],
+      "rounds": 4
    },
    {
       "set": "Test of Champions",
