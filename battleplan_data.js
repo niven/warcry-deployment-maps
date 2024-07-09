@@ -80,6 +80,50 @@ const predefined_battleplans = [
       },
       "matched_play": true
    },
+   /********** Rumble Pack ******************/
+   {
+      "set": "Rumble Pack",
+      "name": "Loot and Pillage",
+      "blurb": "A cache of useful supplies sits abandoned by its absent owners, piled high and yours for the taking. Any moral reservations in so doing must be put aside, for in the Gnarlwood, every resource must be exploited.",
+      "deployments": {
+         "red": [ D(0, 3, 2), D(RIGHT, MIDDLE_Y, 2), D(MIDDLE_X, 3, 1) ],
+         "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D(MIDDLE_X, BOTTOM-3, 1)  ]
+      },
+      "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(RIGHT-3, BOTTOM-3,1) ],
+      "victory": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.","If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.","After a second loot action is made within 1\" of an objective, remove that objective from the battlefield.","When the battle ends, each player scores 2 victory points for each friendly fighter that is carrying treasure."],
+      "rounds": 4
+   },
+   {
+      "set": "Rumble Pack",
+      "name": "Spoils of War",
+      "blurb": "",
+      "rounds": 4
+   },
+   {
+      "set": "Rumble Pack",
+      "name": "Seize and Control",
+      "blurb": "",
+      "rounds": 4
+   },
+   {
+      "set": "Rumble Pack",
+      "name": "Power Struggle",
+      "blurb": "",
+      "rounds": 4
+   },
+   {
+      "set": "Rumble Pack",
+      "name": "Supremacy",
+      "blurb": "",
+      "rounds": 4
+   },
+   {
+      "set": "Rumble Pack",
+      "name": "Tides of Battle",
+      "blurb": "",
+      "rounds": 4
+   },
+
    /********** FEROCIOUS GNARLWOOD II: Electric Boogaloo ******************/
    {
       "set": "The Ferocious Gnarlwood II",
@@ -103,18 +147,6 @@ const predefined_battleplans = [
       },
       "objectives": [ V(MIDDLE_X,MIDDLE_Y-6), V(MIDDLE_X, MIDDLE_Y), V(MIDDLE_X, MIDDLE_Y+6) ],
       "victory": ["At the end of each battle round, the players score 1 victory point for holding 1 or more objectives, 1 victory point for holding more objectives than the other player and 1 victory point for holding 2 or more objectives.", "A Bloody Victory, or None At All: Score 1 victory point each time an enemy fighter within 3\" of an objective is taken down."],
-      "rounds": 4
-   },
-   {
-      "set": "The Ferocious Gnarlwood II",
-      "name": "Loot and Pillage",
-      "blurb": "A cache of useful supplies sits abandoned by its absent owners, piled high and yours for the taking. Any moral reservations in so doing must be put aside, for in the Gnarlwood, every resource must be exploited.",
-      "deployments": {
-         "red": [ D(0, 3, 2), D(RIGHT, MIDDLE_Y, 2), D(MIDDLE_X, 3, 1) ],
-         "blue": [ D(RIGHT, BOTTOM-3, 2), D(0, MIDDLE_Y, 2), D(MIDDLE_X, BOTTOM-3, 1)  ]
-      },
-      "objectives": [ V(3,3,1), V(MIDDLE_X, MIDDLE_Y,1), V(RIGHT-3, BOTTOM-3,1) ],
-      "victory": ["A fighter within 1\" of an objective can loot that objective as an action. If they do, that fighter is now carrying treasure and cannot use an action to drop that treasure.","If a fighter that cannot carry treasure loots an objective, that fighter immediately drops that treasure as a bonus action.","After a second loot action is made within 1\" of an objective, remove that objective from the battlefield.","When the battle ends, each player scores 2 victory points for each friendly fighter that is carrying treasure."],
       "rounds": 4
    },
    {
@@ -420,6 +452,22 @@ const predefined_battleplans = [
       "set": "Sundered Fate / Stealth and Stone",
       "name": "Unknown Territory",
    },
+   /********** Test of Champions ******************/
+   {
+      "set": "Test of Champions",
+      "name": "Cursed Prize",
+   },
+   {
+      "set": "Test of Champions",
+      "name": "Altar of Ascendancy",
+   },
+   {
+      "set": "Test of Champions",
+      "name": "Brutal Conquest",
+   },
+   /********** Test of Champions ******************/
+
+
 ]
 .sort( (a,b) => ( (a.set ? a.set+" - " : "0") + a.name ).localeCompare(( (b.set ? b.set+" - " : "0") + b.name ), "en") );
 // above sort uses "set - name" for sorting
