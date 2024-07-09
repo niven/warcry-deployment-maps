@@ -160,6 +160,32 @@ const predefined_battleplans = [
       "victory": ["At the end of each battle round, each player scores 1 victory point for each objective they control.", "New Moon Secondary: At the beginning of each battle round, the player with the fewest victory points picks an objective. The BLOOD MOON's light shines down on that objective. Any time a fighter is taken down while partially or wholly within the light of the BLOOD MOON, its controller's opponent scores 2 Victory Points"],
       "rounds": 4
    },
+   {
+      "key": "FG2-Mystic-Glade",
+      "set": "The Ferocious Gnarlwood II",
+      "name": "Mystic Glade",
+      "blurb": "A glade brimming with arcane potential. Who better than you to drain it of its mystical powers to further your ambitions?",
+      "deployments": {
+         "red": [ D(MIDDLE_X, 0, 2, Edge(MIDDLE_X,0,MIDDLE_X)), D(RIGHT, MIDDLE_Y, 1), D(MIDDLE_X, BOTTOM-3, 1) ],
+         "blue": [ D(MIDDLE_X, BOTTOM, 2, Edge(MIDDLE_X,BOTTOM,MIDDLE_X)), D(0, MIDDLE_Y, 1), D(MIDDLE_X, 3, 1)  ]
+      },
+      "victory": ["At the end of each battle round, each player scores 1 victory point for each of the following that is true: - They control any objective. - They control two or more objectives. - They control more objectives than their opponent.", "Fighters cannot control more than one objective at a time in this battleplan. If a fighter is within 3\" of multiple objectives, starting with the player that took the first activation that battle round, players decide which objectives all of such friendly fighters are controlling.","Might Makes Right: The first time an attack action made by a fighter within 3\" of the target takes an enemy fighter down in a battle round, that fighter is bloodgifted for the rest of the battle round. After determining control of objectives in the same battle round, if a bloodgifted fighter is within 1\" of an objective their controlling player controls, that player scores 2 victory points.","Pulsing Power: Before the initiative phase each battle round, if one player has fewer victory points, that player gains a number of wild dice equal to the difference in victory points between those players. Those additional wild dice are discarded after that initiative phase."],
+      "rounds": 4
+   },
+   {
+      "key": "FG2-Brutal-Encounter",
+      "set": "The Ferocious Gnarlwood II",
+      "name": "Brutal Encounter",
+      "blurb": "You have happened upon an enemy warband deep within no-man’s land. In order to claim this area of relative safety, you must drive them back.",
+      "deployments": {
+         "red": [ D(MIDDLE_X, 3, 1), D(RIGHT, BOTTOM, 2), D(RIGHT-6, MIDDLE_Y, 1) ],
+         "blue": [ D(MIDDLE_X, BOTTOM-3, 1), D(0,0,2), D(6, MIDDLE_Y, 1)  ]
+      },
+      "victory": ["At the end of each battle round, each player scores 1 victory point for each of the following that is true: - One or more enemy fighters were taken down in that battle round. - More enemy fighters than friendly fighters were taken down in that battle round. - For each enemy fighter with the Hero runemark that are taken down.*- For each enemy fighter with the Ally and/or Monster runemarks that are taken down.",
+      "Control Ground: At the end of each battle round, a player scores 2 victory points if they control more table quarters as shown on the battleplan map than their opponent. To control a table quarter a player must have more fighters wholly within that table quarter than the other player.",
+      "Tangled Roots: After the initiative phase each battle round, if one player has fewer victory points, that player picks an enemy fighter. That fighter makes 1 fewer actions in this battle round."],
+      "rounds": 4
+   },
 
    /********** The Salty Sea Tidal Pack ******************/
    {
